@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: moore-quality-builders
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+       sync: false
+      - key: MAIL_USERNAME
+       sync: false
+      - key: MAIL_PASSWORD
+       sync: false
