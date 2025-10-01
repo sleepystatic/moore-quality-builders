@@ -48,7 +48,7 @@ def submit_estimate():
     try:
         msg = Message('New Estimate Request - Moore Quality Builders',
                       sender=app.config['MAIL_USERNAME'],
-                      recipients=['t.bryan.dev@gmail.com'])  # Use your email for testing
+                      recipients=['mooreqbuilders@gmail.com'])  # Use your email for testing
 
         msg.body = f"""
         New estimate request received:

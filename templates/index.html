@@ -12,13 +12,36 @@
     <meta property="og:description" content="Professional construction services in San Diego County. Licensed contractor specializing in custom homes, remodeling, and commercial construction.">
     <meta property="og:url" content="https://moorequality.builders">
     <link rel="canonical" href="https://moorequality.builders">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Moore Quality Builders">
+    <link rel="sitemap" href="/sitemap.xml">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Moore Quality Builders",
+      "description": "Professional construction and remodeling services in San Diego County",
+      "url": "https://moorequality.builders",
+      "telephone": "(619) 807-1227",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Diego",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "areaServed": "San Diego County",
+      "priceRange": "$$"
+    }
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
 </head>
 <body>
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <a href="#" class="logo">
-                    <img src="{{ url_for('static', filename='images/mqbLogo.jpeg') }}" alt="Moore Quality Builders Logo" class="logo-img">
+                <a href="https://moorequality.builders/" class="logo">
+                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
                 </a>
                 <nav>
                     <ul>
@@ -27,7 +50,7 @@
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="tel:+16198071227" id="phone-number">(619)-807-1227</a></li>
+                        <!-- <li><a href="tel:+16198071227" id="phone-number">(619)-807-1227</a></li> -->
                     </ul>
                 </nav>
             </div>
@@ -64,7 +87,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Our Construction Services</h2>
-                    <p class="section-subtitle">Professional building services for residential and commercial projects</p>
+                    <p class="section-subtitle">Professional building services for residential projects</p>
                 </div>
                 <div class="services-grid">
                     <div class="service-card">
@@ -89,18 +112,6 @@
                             <li>Kitchen & bath remodels</li>
                             <li>Room additions</li>
                             <li>Interior renovations</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">🏢</div>
-                            <h3>Commercial Construction</h3>
-                        </div>
-                        <p>Professional commercial building services for offices, retail spaces, and industrial facilities.</p>
-                        <ul class="service-features">
-                            <li>Office buildings</li>
-                            <li>Retail spaces</li>
-                            <li>Tenant improvements</li>
                         </ul>
                     </div>
                     <div class="service-card">
@@ -180,11 +191,11 @@
                     <div class="about-stats">
                         <div class="stats-grid">
                             <div class="stat">
-                                <div class="stat-number">15+</div>
+                                <div class="stat-number">40+</div>
                                 <div class="stat-label">Years Experience</div>
                             </div>
                             <div class="stat">
-                                <div class="stat-number">200+</div>
+                                <div class="stat-number">100+</div>
                                 <div class="stat-label">Projects Completed</div>
                             </div>
                             <div class="stat">
@@ -335,7 +346,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <img src="{{ url_for('static', filename='images/mqbLogo.jpeg') }}" alt="Moore Quality Builders" class="footer-logo">
+                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
                     <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
                     <p>Licensed General Contractor • CA License #882168</p>
                 </div>
