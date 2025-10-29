@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Resources & Guides | Moore Quality Builders Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="description" content="Expert construction advice, remodeling guides, and San Diego building resources from Moore Quality Builders. Learn about ADUs, permits, costs, and more.">
+    <meta name="keywords" content="construction blog, San Diego remodeling, ADU guide, home renovation tips, construction advice">
+    <link rel="canonical" href="https://moore-qualitybuilders.com/blog">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="/#home">Home</a></li>
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/#gallery">Gallery</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/blog">Resources</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Blog Hero Section -->
+        <section class="blog-hero">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Construction Resources & Guides</h1>
+                    <p class="hero-subtitle">Expert advice for your San Diego building projects</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Posts Grid -->
+        <section class="blog-posts">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Latest Articles</h2>
+                    <p class="section-subtitle">Helpful information from our licensed contractors</p>
+                </div>
+
+                <div class="blog-grid">
+                    <!-- Featured Post - ADU Guide -->
+                    <article class="blog-card featured">
+                        <div class="blog-card-badge">Featured Guide</div>
+                        <div class="blog-card-image">
+                            <img src="/static/images/blog/adu-construction.jpg" alt="ADU Construction in San Diego" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Construction Guides</span>
+                                <span class="blog-date">October 2025</span>
+                            </div>
+                            <h3>Complete Guide to ADU Construction in San Diego County (2025)</h3>
+                            <p>Everything you need to know about building an Accessory Dwelling Unit in San Diego - from permits and regulations to costs, design, and timeline. A comprehensive resource for property owners.</p>
+                            <a href="/blog/adu-construction-san-diego-guide" class="blog-read-more">Read Complete Guide →</a>
+                        </div>
+                    </article>
+
+                    <!-- Placeholder for future posts -->
+                    <article class="blog-card coming-soon">
+                        <div class="blog-card-image">
+                            <img src="/static/images/projects/slider/gallerySlide2.jpg" alt="Kitchen Remodeling">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Remodeling</span>
+                                <span class="blog-date">Coming Soon</span>
+                            </div>
+                            <h3>How Much Does a Kitchen Remodel Cost in San Diego?</h3>
+                            <p>Detailed pricing breakdown for kitchen renovations in San Diego County, including materials, labor, and permit costs for 2025.</p>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card coming-soon">
+                        <div class="blog-card-image">
+                            <img src="/static/images/projects/slider/gallerySlide3.jpg" alt="Home Permits">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Permits & Regulations</span>
+                                <span class="blog-date">Coming Soon</span>
+                            </div>
+                            <h3>Complete Guide to Home Remodeling Permits in San Diego County</h3>
+                            <p>Navigate the permit process with confidence. Learn what permits you need, how to apply, and avoid common pitfalls.</p>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="blog-cta">
+                    <div class="blog-cta-content">
+                        <h3>Ready to Start Your Project?</h3>
+                        <p>Get expert guidance from our licensed contractors. We're here to help bring your vision to life.</p>
+                        <a href="/#contact" class="cta-button">Get Free Estimate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
+                    <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
+                    <p>Licensed General Contractor • CA License #882168</p>
+                </div>
+                <div class="footer-contact">
+                    <p><strong>San Diego County Construction Services</strong></p>
+                    <p>Phone: <a href="tel:6198071227">(619) 807-1227</a></p>
+                    <p>Email: <a href="mailto:mooreqbuilders@gmail.com">mooreqbuilders@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

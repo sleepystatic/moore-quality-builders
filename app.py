@@ -20,9 +20,27 @@ app.config['MAIL_DEBUG'] = True
 mail = Mail(app)
 
 
+@app.before_request
+def redirect_old_domain():
+    """Redirect old domain to new domain with 301 status"""
+    if request.host in ['moorequality.builders', 'www.moorequality.builders']:
+        new_url = request.url.replace(request.host, 'moore-qualitybuilders.com')
+        return redirect(new_url, code=301)
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/blog')
+def blog():
+    return render_template('blog.html')
+
+
+@app.route('/blog/adu-construction-san-diego-guide')
+def blog_adu():
+    return render_template('blog-post-adu.html')
 
 
 @app.route('/submit-estimate', methods=['POST'])
@@ -72,4 +90,4 @@ def not_found_error(error):
     return render_template('404.html'), 404
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)

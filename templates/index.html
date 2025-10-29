@@ -10,8 +10,8 @@
     <meta name="keywords" content="construction, remodeling, San Diego, contractor, home building, kitchen remodel, bathroom renovation">
     <meta property="og:title" content="Moore Quality Builders | San Diego Construction & Remodeling">
     <meta property="og:description" content="Professional construction services in San Diego County. Licensed contractor specializing in custom homes, remodeling, and commercial construction.">
-    <meta property="og:url" content="https://moorequality.builders">
-    <link rel="canonical" href="https://moorequality.builders">
+    <meta property="og:url" content="https://moore-qualitybuilders.com">
+    <link rel="canonical" href="https://moore-qualitybuilders.com">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Moore Quality Builders">
     <link rel="sitemap" href="/sitemap.xml">
@@ -21,7 +21,7 @@
       "@type": "LocalBusiness",
       "name": "Moore Quality Builders",
       "description": "Professional construction and remodeling services in San Diego County",
-      "url": "https://moorequality.builders",
+      "url": "https://moore-qualitybuilders.com",
       "telephone": "(619) 807-1227",
       "address": {
         "@type": "PostalAddress",
@@ -40,7 +40,7 @@
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <a href="https://moorequality.builders/" class="logo">
+                <a href="/" class="logo">
                     <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
                 </a>
                 <nav>
@@ -49,8 +49,8 @@
                         <li><a href="#services">Services</a></li>
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="/blog">Resources</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <!-- <li><a href="tel:+16198071227" id="phone-number">(619)-807-1227</a></li> -->
                     </ul>
                 </nav>
             </div>
@@ -67,7 +67,7 @@
                     <div class="hero-features">
                         <div class="feature">
                             <span class="feature-icon">✓</span>
-                            <span>Licensed & Insured</span>
+                            <span>Licensed, Insured & Bonded</span>
                         </div>
                         <div class="feature">
                             <span class="feature-icon">✓</span>
@@ -95,11 +95,12 @@
                             <div class="service-icon">🏠</div>
                             <h3>Custom Home Building</h3>
                         </div>
-                        <p>New custom home construction from foundation to finish. We work with you through every step of the building process.</p>
+                        <p>New custom home construction, including ADU's, from foundation to finish. We work with you through every step of the building process.</p>
                         <ul class="service-features">
                             <li>Design consultation</li>
-                            <li>Permit handling</li>
-                            <li>Quality materials</li>
+                            <li>Architectural drawings</li>
+                            <li>Structural engineering</li>
+
                         </ul>
                     </div>
                     <div class="service-card">
@@ -111,7 +112,7 @@
                         <ul class="service-features">
                             <li>Kitchen & bath remodels</li>
                             <li>Room additions</li>
-                            <li>Interior renovations</li>
+                            <li>Interior/Exterior renovations</li>
                         </ul>
                     </div>
                     <div class="service-card">
@@ -121,9 +122,8 @@
                         </div>
                         <p>Reliable repair services for all your maintenance needs. From small fixes to major repairs.</p>
                         <ul class="service-features">
-                            <li>Emergency repairs</li>
-                            <li>Structural work</li>
                             <li>Maintenance services</li>
+                            <li>Drywall, painting, electrical, plumbing, and carpentry repairs</li>
                         </ul>
                     </div>
                 </div>
@@ -138,21 +138,21 @@
                 </div>
                 <div class="gallery-slider">
                     <div class="slide active">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23f8f9fa' width='800' height='400'/><rect fill='%23e67e22' x='50' y='50' width='300' height='200' opacity='0.8'/><rect fill='%23f39c12' x='380' y='80' width='200' height='150' opacity='0.8'/><rect fill='%23d35400' x='600' y='120' width='150' height='180' opacity='0.8'/><text x='400' y='350' text-anchor='middle' fill='%23333' font-size='18' font-family='Arial'>Custom Home - Rancho Bernardo</text></svg>" alt="Custom Home Construction">
+                        <img src="/static/images/projects/slider/gallerySlide1.jpg" alt="Custom Home Construction">
                         <div class="slide-info">
                             <h3>Custom Family Home</h3>
                             <p>3,500 sq ft custom home in Rancho Bernardo featuring sustainable materials and energy-efficient design</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23ecf0f1' width='800' height='400'/><rect fill='%23e67e22' x='100' y='100' width='600' height='200' opacity='0.8'/><rect fill='%23f39c12' x='150' y='120' width='200' height='160' opacity='0.9'/><rect fill='%23d35400' x='450' y='140' width='150' height='120' opacity='0.9'/><text x='400' y='350' text-anchor='middle' fill='%232c3e50' font-size='18' font-family='Arial'>Kitchen Remodel - Del Mar</text></svg>" alt="Kitchen Remodeling">
+                        <img src="/static/images/projects/slider/gallerySlide2.jpg" alt="Kitchen Remodeling">
                         <div class="slide-info">
                             <h3>Modern Kitchen Remodel</h3>
                             <p>Complete kitchen transformation in Del Mar with granite countertops and custom cabinetry</p>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23bdc3c7' width='800' height='400'/><rect fill='%23e67e22' x='200' y='80' width='400' height='240' opacity='0.8'/><rect fill='%23f39c12' x='100' y='120' width='120' height='160' opacity='0.9'/><rect fill='%23d35400' x='580' y='100' width='100' height='200' opacity='0.9'/><text x='400' y='350' text-anchor='middle' fill='%232c3e50' font-size='18' font-family='Arial'>Commercial Office - Mission Valley</text></svg>" alt="Commercial Construction">
+                        <img src="/static/images/projects/slider/gallerySlide3.jpg" alt="Commercial Reconstruction">
                         <div class="slide-info">
                             <h3>Commercial Office Building</h3>
                             <p>8,000 sq ft office building in Mission Valley with modern amenities and professional finish</p>
@@ -177,9 +177,19 @@
                             <h2 class="section-title">About Moore Quality Builders</h2>
                             <p class="section-subtitle">Honest & Reliable Construction Services</p>
                         </div>
+
+                        <div class="owner-intro">
+                            <img src="{{ url_for('static', filename='images/owner-photo.jpg') }}" alt="Owner of Moore Quality Builders" class="owner-photo">
+                            <div class="owner-text">
+                                <h3>Meet Michael Moore</h3>
+                                <p class="owner-title">Founder & Licensed Contractor</p>
+                                <p>With over 40 years of experience in San Diego construction, Michael founded Moore Quality Builders on the principles of honest work and reliable service. Every project receives his personal attention and commitment to quality.</p>
+                            </div>
+                        </div>
+
                         <p>Moore Quality Builders has been proudly serving San Diego County with exceptional construction and remodeling services. Our commitment to quality craftsmanship, honest business practices, and reliable service has made us a trusted name in the local construction industry.</p>
 
-                        <p>We specialize in residential and commercial construction projects throughout San Diego County. Our experienced team combines time-tested building methods with modern techniques and materials to deliver results that exceed expectations.</p>
+                        <p>We specialize in residential construction projects throughout San Diego County. Our experienced team combines time-tested building methods with modern techniques and materials to deliver results that exceed expectations.</p>
 
                         <p>Every project we undertake reflects our core values: <strong>integrity, quality, and customer satisfaction</strong>. We're not just building structures; we're building lasting relationships with our clients and contributing to the beautiful communities of San Diego.</p>
 
@@ -234,29 +244,61 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            <p>"Moore Quality Builders transformed our kitchen beyond our expectations. Professional, on-time, and excellent craftsmanship."</p>
+                            <p>I engaged Michael and his team to do some wall related repair work at my SD home.
+From the first call he was responsive and timely. It is rare these days that contractors respond to texts or emails quickly.
+Michael did, and was on time for every meeting.
+The work started and finished on time and on budget. He even did a few things out of scope while he had the equipment available.
+
+Best building/contractor experience I have had.
+He's a real pro and the finished product was better than I had hoped.
+
+Great guy-- solid company.</p>
                         </div>
                         <div class="testimonial-author">
-                            <strong>Name Here</strong>
-                            <span>Location/Occupation</span>
+                            <strong>Allan Farwe</strong>
+                            <span>San Diego, CA</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            <p>"We've used them for years, etc..."</p>
+                            <p>I hired Michael to remodel my bathroom after one meeting.  I was so impressed with is eye for detail and his desire to do a great job.  He is a perfectionist and he always has the clients needs at the top of his mind.  He made sure I put the exhaust fan in a spot not too noticeable yet highly functional and lighting in the right place so that there wouldn't be shadows on my face while getting ready in the mirror.  I don't know any other contractors so conscientious and I know a lot of them.
+
+        He is was always on time (usually early but waiting out side until the exact time), he was clean, fast, great workmanship, easy to work with, creative with ideas to make the project better and his prices are very reasonable.
+
+        He is one you will be happy to refer to your friends and family and I have referred him several times.  Could write more but happy to talk to anyone.</p>
                         </div>
                         <div class="testimonial-author">
-                            <strong>Name Here</strong>
-                            <span>Business/Location</span>
+                            <strong>Anna Marie</strong>
+                            <span>Sand and Sea Realty - San Diego, CA</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-text">
-                            <p>Example text here</p>
+                            <p>Michael is so easy to work with: he is reliable, reasonable, and comes up with both the most efficient yet design forward ideas.  He has done multiple project on my house including renovating my bathroom.  He thoroughly explains process and leaves workspace clean.</p>
                         </div>
                         <div class="testimonial-author">
-                            <strong>Name Here</strong>
-                            <span>Location/Business</span>
+                            <strong>Jen L.</strong>
+                            <span>San Diego, CA</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>My family and I needed a simple fence put in, and Moore Quality Builders were on the job. Michael is a friendly face with a good work ethic and meticulous craft. He takes his work seriously and charges very fairly. My family all loved him and his beautiful fence installment. I recommend him for any task, big and small, and I commend him on his attention to detail while also working quickly. Efficient and professional craft.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Isabella L.</strong>
+                            <span>San Diego, CA</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>Super professional, and skilled!  Cleaned up at job end.  Kind and patient with senior citizen home owner.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Sarah B.</strong>
+                            <span>San Francisco, CA</span>
                         </div>
                     </div>
                 </div>
@@ -319,7 +361,7 @@
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-icon">🕒</div>
+                                <div class="contact-icon">🕐</div>
                                 <div class="contact-text">
                                     <h4>Business Hours</h4>
                                     <p>Monday - Friday: 7:00 AM - 6:00 PM<br>
@@ -328,7 +370,7 @@
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-icon">🏗️</div>
+                                <div class="contact-icon">🗝️</div>
                                 <div class="contact-text">
                                     <h4>License</h4>
                                     <p>CA License #882168<br>
