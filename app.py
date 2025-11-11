@@ -43,6 +43,11 @@ def blog_adu():
     return render_template('blog-post-adu.html')
 
 
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html')
+
+
 @app.route('/submit-estimate', methods=['POST'])
 def submit_estimate():
     print("=== FORM SUBMISSION DEBUG ===")

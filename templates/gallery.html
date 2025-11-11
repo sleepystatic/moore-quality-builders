@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | Moore Quality Builders San Diego</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="description" content="View our portfolio of completed construction projects in San Diego. Browse kitchens, bathrooms, decks, doors, and custom construction work by Moore Quality Builders.">
+    <meta name="keywords" content="construction portfolio, San Diego projects, kitchen remodel gallery, bathroom renovation photos, deck construction, custom doors">
+    <link rel="canonical" href="https://moore-qualitybuilders.com/gallery">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="/#home">Home</a></li>
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/blog">Resources</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Gallery Hero -->
+        <section class="gallery-page-hero">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Our Project Gallery</h1>
+                    <p class="hero-subtitle">40+ Years of Quality Craftsmanship in San Diego County</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Filter -->
+        <section class="gallery-page-content">
+            <div class="container">
+                <div class="gallery-filter">
+                    <button class="filter-btn active" data-category="all">All Projects</button>
+                    <button class="filter-btn" data-category="kitchens">Kitchens</button>
+                    <button class="filter-btn" data-category="bathrooms">Bathrooms</button>
+                    <button class="filter-btn" data-category="decks">Decks</button>
+                    <button class="filter-btn" data-category="doors">Doors & Windows</button>
+                    <button class="filter-btn" data-category="custom">Custom Work</button>
+                </div>
+
+                <!-- Kitchens Category -->
+                <div class="gallery-category" data-category="kitchens">
+                    <h2 class="category-title">Kitchen Remodeling Projects</h2>
+                    <div class="gallery-grid-masonry">
+                        <!-- Kitchen images will go here -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/kitchens/kitchen-1.jpg" alt="Modern kitchen remodel San Diego" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Modern Kitchen Remodel</h4>
+                                <p>Complete kitchen transformation</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder for additional kitchen photos -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/kitchens/kitchen-2.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Kitchen Renovation</h4>
+                                <p>Custom cabinetry & countertops</p>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/kitchens/kitchen-3.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Kitchen Renovation</h4>
+                                <p>Custom cabinetry & countertops</p>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/kitchens/kitchen-4.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Kitchen Renovation</h4>
+                                <p>Custom cabinetry & countertops</p>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/kitchens/kitchen-5.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Kitchen Renovation</h4>
+                                <p>Custom cabinetry & countertops</p>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/kitchens/kitchen-6.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Kitchen Renovation</h4>
+                                <p>Custom cabinetry & countertops</p>
+                            </div>
+                        </div>
+                        <!-- Add more kitchen items here - repeat structure for each photo -->
+                    </div>
+                </div>
+
+                <!-- Bathrooms Category -->
+                <div class="gallery-category" data-category="bathrooms">
+                    <h2 class="category-title">Bathroom Renovation Projects</h2>
+                    <div class="gallery-grid-masonry">
+                        <!-- Bathroom images will go here -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/bathrooms/bathroom-1.jpg" alt="Bathroom remodel San Diego" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Master Bath Remodel</h4>
+                                <p>Spa-inspired design</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder for additional bathroom photos -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/bathrooms/bathroom-2.jpg" alt="Bathroom renovation" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Guest Bathroom</h4>
+                                <p>Modern fixtures & tile work</p>
+                            </div>
+                        </div>
+                        <!-- Add more bathroom items here -->
+                    </div>
+                </div>
+
+                <!-- Decks Category -->
+                <div class="gallery-category" data-category="decks">
+                    <h2 class="category-title">Deck Construction Projects</h2>
+                    <div class="gallery-grid-masonry">
+                        <!-- Deck images will go here -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/decks/deck-1.jpg" alt="Custom deck construction" onerror="this.src='/static/images/projects/slider/gallerySlide3.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Custom Composite Deck</h4>
+                                <p>Low-maintenance outdoor living</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder for additional deck photos -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/decks/deck-2.jpg" alt="Deck building" onerror="this.src='/static/images/projects/slider/gallerySlide3.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Multi-Level Deck</h4>
+                                <p>Expanded outdoor space</p>
+                            </div>
+                        </div>
+                        <!-- Add more deck items here -->
+                    </div>
+                </div>
+
+                <!-- Doors & Windows Category -->
+                <div class="gallery-category" data-category="doors">
+                    <h2 class="category-title">Doors & Windows Projects</h2>
+                    <div class="gallery-grid-masonry">
+                        <!-- Door/window images will go here -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/doors/door-1.jpg" alt="Custom door installation" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Custom Entry Door</h4>
+                                <p>Craftsman style installation</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder for additional door/window photos -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/doors/door-2.jpg" alt="Window replacement" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Window Replacement</h4>
+                                <p>Energy-efficient upgrades</p>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/doors/door-2.jpg" alt="Window replacement" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Window Replacement</h4>
+                                <p>Energy-efficient upgrades</p>
+                            </div>
+                        </div>
+                        <!-- Add more door/window items here -->
+                    </div>
+                </div>
+
+                <!-- Custom Work Category -->
+                <div class="gallery-category" data-category="custom">
+                    <h2 class="category-title">Custom Construction Projects</h2>
+                    <div class="gallery-grid-masonry">
+                        <!-- Custom project images will go here -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/custom/custom-1.jpg" alt="Custom construction work" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Custom ADU</h4>
+                                <p>Backyard accessory dwelling unit</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder for additional custom photos -->
+                        <div class="gallery-item">
+                            <img src="/static/images/gallery/custom/custom-2.jpg" alt="Custom home addition" onerror="this.src='/static/images/projects/slider/gallerySlide3.jpg'">
+                            <div class="gallery-item-overlay">
+                                <h4>Room Addition</h4>
+                                <p>Seamless home expansion</p>
+                            </div>
+                        </div>
+                        <!-- Add more custom items here -->
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="gallery-cta">
+                    <div class="gallery-cta-content">
+                        <h2>Ready to Start Your Project?</h2>
+                        <p>Let's bring your vision to life with quality craftsmanship and reliable service</p>
+                        <a href="/#contact" class="cta-button">Get Free Estimate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
+                    <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
+                    <p>Licensed General Contractor • CA License #882168</p>
+                </div>
+                <div class="footer-contact">
+                    <p><strong>San Diego County Construction Services</strong></p>
+                    <p>Phone: <a href="tel:6198071227">(619) 807-1227</a></p>
+                    <p>Email: <a href="mailto:mooreqbuilders@gmail.com">mooreqbuilders@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gallery-filter.js') }}"></script>
+</body>
+</html>
