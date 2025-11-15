@@ -57,165 +57,25 @@
                     <button class="filter-btn" data-category="custom">Custom Work</button>
                 </div>
 
-                <!-- Kitchens Category -->
-                <div class="gallery-category" data-category="kitchens">
-                    <h2 class="category-title">Kitchen Remodeling Projects</h2>
+                <!-- Dynamically Generated Categories -->
+                {% for category, data in gallery_data.items() %}
+                <div class="gallery-category" data-category="{{ category }}">
+                    <h2 class="category-title">{{ data.title }}</h2>
                     <div class="gallery-grid-masonry">
-                        <!-- Kitchen images will go here -->
+                        {% for image in data.images %}
                         <div class="gallery-item">
-                            <img src="/static/images/gallery/kitchens/kitchen-1.jpg" alt="Modern kitchen remodel San Diego" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
+                            <img src="{{ image.path }}"
+                                 alt="{{ image.alt }}"
+                                 onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
                             <div class="gallery-item-overlay">
-                                <h4>Modern Kitchen Remodel</h4>
-                                <p>Complete kitchen transformation</p>
+                                <h4>{{ image.title }}</h4>
+                                <p>{{ image.description }}</p>
                             </div>
                         </div>
-                        <!-- Placeholder for additional kitchen photos -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/kitchens/kitchen-2.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Kitchen Renovation</h4>
-                                <p>Custom cabinetry & countertops</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/kitchens/kitchen-3.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Kitchen Renovation</h4>
-                                <p>Custom cabinetry & countertops</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/kitchens/kitchen-4.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Kitchen Renovation</h4>
-                                <p>Custom cabinetry & countertops</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/kitchens/kitchen-5.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Kitchen Renovation</h4>
-                                <p>Custom cabinetry & countertops</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/kitchens/kitchen-6.jpg" alt="Kitchen renovation" onerror="this.src='/static/images/projects/slider/gallerySlide2.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Kitchen Renovation</h4>
-                                <p>Custom cabinetry & countertops</p>
-                            </div>
-                        </div>
-                        <!-- Add more kitchen items here - repeat structure for each photo -->
+                        {% endfor %}
                     </div>
                 </div>
-
-                <!-- Bathrooms Category -->
-                <div class="gallery-category" data-category="bathrooms">
-                    <h2 class="category-title">Bathroom Renovation Projects</h2>
-                    <div class="gallery-grid-masonry">
-                        <!-- Bathroom images will go here -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/bathrooms/bathroom-1.jpg" alt="Bathroom remodel San Diego" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Master Bath Remodel</h4>
-                                <p>Spa-inspired design</p>
-                            </div>
-                        </div>
-                        <!-- Placeholder for additional bathroom photos -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/bathrooms/bathroom-2.jpg" alt="Bathroom renovation" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Guest Bathroom</h4>
-                                <p>Modern fixtures & tile work</p>
-                            </div>
-                        </div>
-                        <!-- Add more bathroom items here -->
-                    </div>
-                </div>
-
-                <!-- Decks Category -->
-                <div class="gallery-category" data-category="decks">
-                    <h2 class="category-title">Deck Construction Projects</h2>
-                    <div class="gallery-grid-masonry">
-                        <!-- Deck images will go here -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/decks/deck-1.jpg" alt="Custom deck construction" onerror="this.src='/static/images/projects/slider/gallerySlide3.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Custom Composite Deck</h4>
-                                <p>Low-maintenance outdoor living</p>
-                            </div>
-                        </div>
-                        <!-- Placeholder for additional deck photos -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/decks/deck-2.jpg" alt="Deck building" onerror="this.src='/static/images/projects/slider/gallerySlide3.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Multi-Level Deck</h4>
-                                <p>Expanded outdoor space</p>
-                            </div>
-                        </div>
-                        <!-- Add more deck items here -->
-                    </div>
-                </div>
-
-                <!-- Doors & Windows Category -->
-                <div class="gallery-category" data-category="doors">
-                    <h2 class="category-title">Doors & Windows Projects</h2>
-                    <div class="gallery-grid-masonry">
-                        <!-- Door/window images will go here -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/doors/door-1.jpg" alt="Custom door installation" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Custom Entry Door</h4>
-                                <p>Craftsman style installation</p>
-                            </div>
-                        </div>
-                        <!-- Placeholder for additional door/window photos -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/doors/door-2.jpg" alt="Window replacement" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Window Replacement</h4>
-                                <p>Energy-efficient upgrades</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/doors/door-2.jpg" alt="Window replacement" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Window Replacement</h4>
-                                <p>Energy-efficient upgrades</p>
-                            </div>
-                        </div>
-                        <!-- Add more door/window items here -->
-                    </div>
-                </div>
-
-                <!-- Custom Work Category -->
-                <div class="gallery-category" data-category="custom">
-                    <h2 class="category-title">Custom Construction Projects</h2>
-                    <div class="gallery-grid-masonry">
-                        <!-- Custom project images will go here -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/custom/custom-1.jpg" alt="Custom construction work" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Custom ADU</h4>
-                                <p>Backyard accessory dwelling unit</p>
-                            </div>
-                        </div>
-                        <!-- Placeholder for additional custom photos -->
-                        <div class="gallery-item">
-                            <img src="/static/images/gallery/custom/custom-2.jpg" alt="Custom home addition" onerror="this.src='/static/images/projects/slider/gallerySlide3.jpg'">
-                            <div class="gallery-item-overlay">
-                                <h4>Room Addition</h4>
-                                <p>Seamless home expansion</p>
-                            </div>
-                        </div>
-                        <!-- Add more custom items here -->
-                    </div>
-                </div>
+                {% endfor %}
 
                 <!-- Call to Action -->
                 <div class="gallery-cta">
