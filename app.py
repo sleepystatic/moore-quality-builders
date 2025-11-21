@@ -103,35 +103,29 @@ def gallery():
 
 @app.route('/submit-estimate', methods=['POST'])
 def submit_estimate():
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+
+    name = request.form.get('name', '').strip()
+    email = request.form.get('email', '').strip()
+    phone = request.form.get('phone', '').strip()
+    project = request.form.get('project', '').strip()
+
+    if not all([name, email, phone, project]):
+        return jsonify({'status': 'error', 'message': 'All fields are required.'})
+
     try:
-        print("=== FORM SUBMISSION DEBUG ===")
-        print(f"Email user: {os.getenv('MAIL_USERNAME')}")
-        print(f"Has password: {bool(os.getenv('MAIL_PASSWORD'))}")
-        print(f"Password length: {len(os.getenv('MAIL_PASSWORD', ''))}")
-        print(f"Mail server: {app.config['MAIL_SERVER']}")
-        print(f"Mail port: {app.config['MAIL_PORT']}")
-        print(f"Use TLS: {app.config['MAIL_USE_TLS']}")
-        print(f"Use SSL: {app.config['MAIL_USE_SSL']}")
+        print("=== USING RAW SMTP ===")
+        print(f"Connecting to smtp.gmail.com:587...")
 
-        name = request.form.get('name', '').strip()
-        email = request.form.get('email', '').strip()
-        phone = request.form.get('phone', '').strip()
-        project = request.form.get('project', '').strip()
+        # Create message
+        msg = MIMEMultipart()
+        msg['From'] = os.getenv('MAIL_USERNAME')
+        msg['To'] = 'mooreqbuilders@gmail.com'
+        msg['Subject'] = 'New Estimate Request - Moore Quality Builders'
 
-        print(f"Form data received: {name}, {email}, {phone}")
-
-        if not all([name, email, phone, project]):
-            return jsonify({'status': 'error', 'message': 'All fields are required.'})
-
-        if '@' not in email or '.' not in email:
-            return jsonify({'status': 'error', 'message': 'Please enter a valid email address.'})
-
-        print("Creating message...")
-        msg = Message('New Estimate Request - Moore Quality Builders',
-                      sender=app.config['MAIL_USERNAME'],
-                      recipients=['mooreqbuilders@gmail.com'])
-
-        msg.body = f"""
+        body = f"""
         New estimate request received:
 
         Name: {name}
@@ -139,31 +133,42 @@ def submit_estimate():
         Phone: {phone}
         Project: {project}
         """
+        msg.attach(MIMEText(body, 'plain'))
 
-        print("Message created. Attempting to send email...")
+        print("Connecting to SMTP server...")
+        server = smtplib.SMTP('smtp.gmail.com', 587, timeout=30)
 
-        # Try to send with explicit error catching
-        try:
-            with app.app_context():
-                mail.send(msg)
-            print("Email sent successfully!")
-            return jsonify({'status': 'success', 'message': 'Thank you! Your request has been sent.'})
-        except Exception as send_error:
-            print(f"SEND ERROR TYPE: {type(send_error).__name__}")
-            print(f"SEND ERROR MESSAGE: {str(send_error)}")
+        print("Starting TLS...")
+        server.starttls()
 
-            # Try to get more details
-            import sys
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            print(f"Exception type: {exc_type}")
-            print(f"Exception value: {exc_value}")
+        print("Logging in...")
+        server.login(os.getenv('MAIL_USERNAME'), os.getenv('MAIL_PASSWORD'))
 
-            import traceback
-            print("Full traceback:")
-            traceback.print_exc()
+        print("Sending message...")
+        server.send_message(msg)
 
-            # Still return success to user
-            return jsonify({'status': 'success', 'message': 'Thank you! We received your request.'})
+        print("Closing connection...")
+        server.quit()
+
+        print("Email sent successfully via raw SMTP!")
+        return jsonify({'status': 'success', 'message': 'Thank you! Your request has been sent.'})
+
+    except smtplib.SMTPAuthenticationError as auth_error:
+        print(f"SMTP AUTH ERROR: {auth_error}")
+        print("This means Gmail rejected your credentials")
+        return jsonify({'status': 'success', 'message': 'Thank you! We received your request.'})
+
+    except smtplib.SMTPException as smtp_error:
+        print(f"SMTP ERROR: {type(smtp_error).__name__}")
+        print(f"SMTP ERROR MESSAGE: {smtp_error}")
+        return jsonify({'status': 'success', 'message': 'Thank you! We received your request.'})
+
+    except Exception as e:
+        print(f"GENERAL ERROR: {type(e).__name__}")
+        print(f"ERROR MESSAGE: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'status': 'success', 'message': 'Thank you! We received your request.'})
 
     except Exception as outer_error:
         print(f"OUTER ERROR: {type(outer_error).__name__}")
