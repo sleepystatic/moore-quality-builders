@@ -44,7 +44,7 @@ def submit_estimate():
                     },
                     "To": [
                         {
-                            "Email": "t.bryan.dev@gmail.com",
+                            "Email": "mooreqbuilders@gmail.com",
                             "Name": "Moore Quality Builders"
                         }
                     ],
