@@ -139,6 +139,13 @@ nav a:hover {
     font-weight: 700;
 }
 
+.hero-logo-header {
+    width: 300px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+
 .hero-subtitle {
     font-size: 1.4rem;
     margin-bottom: 2rem;
@@ -704,7 +711,7 @@ footer {
     .gallery-dots {
         text-align: center;
         position: absolute;
-        bottom: -10px !important;
+        bottom: -20px !important;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -935,11 +942,12 @@ footer {
 .gallery-dots {
     text-align: center;
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 10px;
+    z-index: 10;
 }
 
 .dot {
@@ -969,10 +977,9 @@ footer {
 }
 
 .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: start;
+    column-count: 3;  /* 3 columns */
+    column-gap: 2rem;  /* Horizontal space between columns */
+    margin: 0;
 }
 
 .testimonial-card {
@@ -982,6 +989,10 @@ footer {
     box-shadow: 0 3px 15px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     border-top: 4px solid #e67e22;
+    margin-bottom: 2rem;  /* Vertical space between cards */
+    break-inside: avoid;  /* Prevents breaking cards across columns */
+    display: inline-block;  /* Makes masonry work */
+    width: 100%;
 }
 
 .testimonial-card:hover {
@@ -1724,6 +1735,15 @@ footer {
 
     .timeline-phase {
         padding: 1.5rem;
+    }
+
+        .testimonials-grid {
+        column-count: 1;
+        column-gap: 0;
+    }
+
+    .testimonial-card {
+        margin-bottom: 1.5rem;
     }
 
     .related-grid {

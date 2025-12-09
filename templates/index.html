@@ -69,6 +69,7 @@
         <section id="home" class="hero">
             <div class="hero-overlay"></div>
             <div class="container">
+                <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="hero-logo-header">
                 <div class="hero-content">
                     <h1>Professional Construction Services</h1>
                     <p class="hero-subtitle">Serving San Diego County with Quality Craftsmanship Since 2009</p>
@@ -199,7 +200,7 @@
 
                         <p>We specialize in residential construction projects throughout San Diego County. Our experienced team combines time-tested building methods with modern techniques and materials to deliver results that exceed expectations.</p>
 
-                        <p>Every project we undertake reflects our core values: <strong>integrity, quality, and customer satisfaction</strong>. We're not just building structures; we're building lasting relationships with our clients and contributing to the beautiful communities of San Diego.</p>
+                        <p>Every project we undertake reflects our core values: <strong>INTEGRITY, QUALITY, CUSTOMER SATISFACTION</strong>. We're not just building structures; we're building lasting relationships with our clients and contributing to the beautiful communities of San Diego.</p>
 
                         <div class="credentials">
                             <p><strong>California Contractors License #882168</strong></p>
@@ -247,9 +248,33 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">What Our Clients Say</h2>
-                    <p class="section-subtitle">Don't just take our word for it</p>
+                    <p class="section-subtitle"></p>
                 </div>
                 <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>Moore Quality Builders did a complete remodel of our home and garage in Point Loma, San
+Diego. The house was in serious need of structural and cosmetic upgrades from foundation to
+roof line. Mike Moore is a serious full-Ame builder. He is very professional and knowledgeable in
+construction design and implementation and solving problems including deferred maintenance,
+bringing a structure up to code, updating and modernizing infrastructure and systems including
+plumbing, electrical, roofing, framing, windows, floors, interiors and exteriors. We especially
+appreciate his keen design sense and suggestions while he also listened and delivered what we
+asked for when we made suggestions and decisions. Mike and his crew are very peculiar about
+quality details. Corners are perfect, floors are level, measurements are exact and nothing is left
+unfinished. Mike Moore is very proactive and easy to work with. He brings solutions and
+suggestions to the table and worked with us to make each decision fit our vision and his
+exact standards. Mike Moore and crew show up every day. They work hard all day and clean
+up the job site at the end of each day. They are respectful of neighbors and became well known
+and well liked in our neighborhood. It was a pleasure to work with Mike Moore and his crews.
+We highly recommend Moor Quality Builders for residential building, remodeling, repairs and
+maintenance.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <strong>Pam F.</strong>
+                            <span>San Diego, CA</span>
+                        </div>
+                    </div>
                     <div class="testimonial-card">
                         <div class="testimonial-text">
                             <p>I engaged Michael and his team to do some wall related repair work at my SD home.
@@ -424,9 +449,14 @@ Great guy-- solid company.</p>
             <div class="footer-content">
                 <div class="footer-info">
                     <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
-                    <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
                     <p>Licensed General Contractor • CA License #882168</p>
-                    <p>Designed by <a href="https://staticdesigns.dev/" target="_blank">Static Designs LLC</a></p>
+
+                    <div class="footer-credits">
+                        <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
+                        <p class="designer-credit">
+                            Website by <a href="https://staticdesigns.dev/" target="_blank" rel="nofollow">Static Designs LLC</a>
+                        </p>
+                    </div>
                 </div>
                 <div class="footer-contact">
                     <p><strong>San Diego County Construction Services</strong></p>
