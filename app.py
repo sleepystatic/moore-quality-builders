@@ -1,6 +1,6 @@
 import socket
 
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 from mailjet_rest import Client
 import os
 from dotenv import load_dotenv
@@ -77,20 +77,12 @@ def submit_estimate():
         # Send email
         result = mailjet.send.create(data=data)
 
-        print(f"✅ Mailjet Response Status: {result.status_code}")
-        print(f"Response: {result.json()}")
-
         if result.status_code == 200:
             return jsonify({'status': 'success', 'message': 'Thank you! Your request has been sent.'})
         else:
-            print(f"❌ Mailjet error: {result.json()}")
             return jsonify({'status': 'success', 'message': 'Thank you! We received your request.'})
 
     except Exception as e:
-        print(f"❌ Error: {type(e).__name__}")
-        print(f"Message: {e}")
-        import traceback
-        traceback.print_exc()
         return jsonify({'status': 'success', 'message': 'Thank you! We received your request.'})
 
 

@@ -1,472 +1,945 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5Z3BMY3ZX"></script>
+
     <script>
+
       window.dataLayer = window.dataLayer || [];
+
       function gtag(){dataLayer.push(arguments);}
+
       gtag('js', new Date());
 
+
+
       gtag('config', 'G-S5Z3BMY3ZX');
+
     </script>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Moore Quality Builders | San Diego Construction & Remodeling</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+
+
     <meta name="description" content="Moore Quality Builders - Professional construction and remodeling services in San Diego County. Licensed, bonded, and insured. Free estimates.">
+
     <meta name="keywords" content="construction, remodeling, San Diego, contractor, home building, kitchen remodel, bathroom renovation">
+
     <meta property="og:title" content="Moore Quality Builders | San Diego Construction & Remodeling">
+
     <meta property="og:description" content="Professional construction services in San Diego County. Licensed contractor specializing in custom homes, remodeling, and commercial construction.">
+
     <meta property="og:url" content="https://moore-qualitybuilders.com">
+
     <link rel="canonical" href="https://moore-qualitybuilders.com">
+
     <meta name="robots" content="index, follow">
+
     <meta name="author" content="Moore Quality Builders">
+
     <link rel="sitemap" href="/sitemap.xml">
+
     <script type="application/ld+json">
+
     {
+
       "@context": "https://schema.org",
+
       "@type": "LocalBusiness",
+
       "name": "Moore Quality Builders",
+
       "description": "Professional construction and remodeling services in San Diego County",
+
       "url": "https://moore-qualitybuilders.com",
+
       "telephone": "(619) 807-1227",
+
       "address": {
+
         "@type": "PostalAddress",
+
         "addressLocality": "San Diego",
+
         "addressRegion": "CA",
+
         "addressCountry": "US"
+
       },
+
       "areaServed": "San Diego County",
+
       "priceRange": "$$"
+
     }
+
     </script>
+
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+
 </head>
+
 <body>
+
     <header id="header">
+
         <div class="container">
+
             <div class="header-content">
+
                 <a href="/" class="logo">
+
                     <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
+
                 </a>
-                <nav>
+
+                <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+
+                <nav id="mainNav">
+
                     <ul>
+
                         <li><a href="#home">Home</a></li>
+
                         <li><a href="#services">Services</a></li>
+
                         <li><a href="gallery">Gallery</a></li>
+
                         <li><a href="#about">About</a></li>
+
                         <li><a href="/blog">Resources</a></li>
+
                         <li><a href="#contact">Contact</a></li>
+
                     </ul>
+
                 </nav>
+
             </div>
+
         </div>
+
     </header>
 
+
+
     <main>
+
         <section id="home" class="hero">
+
             <div class="hero-overlay"></div>
+
             <div class="container">
+
                 <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="hero-logo-header">
+
                 <div class="hero-content">
+
                     <h1>Professional Construction Services</h1>
+
                     <p class="hero-subtitle">Serving San Diego County with Quality Craftsmanship Since 2009</p>
+
                     <div class="hero-features">
+
                         <div class="feature">
+
                             <span class="feature-icon">✓</span>
+
                             <span>Licensed, Insured & Bonded</span>
+
                         </div>
+
                         <div class="feature">
+
                             <span class="feature-icon">✓</span>
+
                             <span>Honest & Reliable</span>
+
                         </div>
+
                         <div class="feature">
+
                             <span class="feature-icon">✓</span>
+
                             <span>Quality Guaranteed</span>
+
                         </div>
+
                     </div>
+
                     <a href="#contact" class="cta-button">Request Free Estimate</a>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section id="services" class="services">
+
             <div class="container">
+
                 <div class="section-header">
+
                     <h2 class="section-title">Our Construction Services</h2>
+
                     <p class="section-subtitle">Professional building services for residential projects</p>
+
                 </div>
+
                 <div class="services-grid">
+
                     <div class="service-card">
+
                         <div class="service-header">
+
                             <div class="service-icon">🏠</div>
+
                             <h3>Custom Home Building</h3>
+
                         </div>
+
                         <p>New custom home construction, including ADU's, from foundation to finish. We work with you through every step of the building process.</p>
+
                         <ul class="service-features">
+
                             <li>Design consultation</li>
+
                             <li>Architectural drawings</li>
+
                             <li>Structural engineering</li>
 
+
+
                         </ul>
+
                     </div>
+
                     <div class="service-card">
+
                         <div class="service-header">
+
                             <div class="service-icon">🔨</div>
+
                             <h3>Home Remodeling</h3>
+
                         </div>
+
                         <p>Complete home renovations including kitchens, bathrooms, room additions, and whole house remodels.</p>
+
                         <ul class="service-features">
+
                             <li>Kitchen & bath remodels</li>
+
                             <li>Room additions</li>
+
                             <li>Interior/Exterior renovations</li>
+
                         </ul>
+
                     </div>
+
                     <div class="service-card">
+
                         <div class="service-header">
+
                             <div class="service-icon">🛠️</div>
+
                             <h3>Home Repairs</h3>
+
                         </div>
+
                         <p>Reliable repair services for all your maintenance needs. From small fixes to major repairs.</p>
+
                         <ul class="service-features">
+
                             <li>Maintenance services</li>
+
                             <li>Drywall, painting, electrical, plumbing, and carpentry repairs</li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section id="gallery" class="gallery">
+
             <div class="container">
+
                 <div class="section-header">
+
                     <h2 class="section-title">Recent Projects</h2>
+
                     <p class="section-subtitle">See our quality craftsmanship in action</p>
+
                 </div>
+
                 <div class="gallery-slider">
+
                     <div class="slide active">
+
                         <img src="/static/images/projects/slider/gallerySlide1.jpg" alt="Custom Home Construction">
+
                         <div class="slide-info">
+
                             <h3>Versatile Framing</h3>
+
                             <p>Framing custom home's to ADU's</p>
+
                         </div>
+
                     </div>
+
                     <div class="slide">
+
                         <img src="/static/images/projects/slider/gallerySlide2.jpg" alt="Kitchen Remodeling">
+
                         <div class="slide-info">
+
                             <h3>Custom Homes</h3>
+
                             <p>Everything from interior to exterior finish work, carpentry, ADU's, and more!</p>
+
                         </div>
+
                     </div>
+
                     <div class="slide">
+
                         <img src="/static/images/projects/slider/gallerySlide3.jpg" alt="Commercial Reconstruction">
+
                         <div class="slide-info">
+
                             <h3>New Constructions</h3>
+
                             <p>Single story conversions into two stories</p>
+
                         </div>
+
                     </div>
+
                     <div class="gallery-dots">
+
                         <button class="dot active" onclick="currentSlide(1)"></button>
+
                         <button class="dot" onclick="currentSlide(2)"></button>
+
                         <button class="dot" onclick="currentSlide(3)"></button>
+
                     </div>
+
                     <button class="gallery-nav prev" onclick="changeSlide(-1)" aria-label="Previous project">‹</button>
+
                     <button class="gallery-nav next" onclick="changeSlide(1)" aria-label="Next project">›</button>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <section id="about" class="about">
+
             <div class="container">
+
                 <div class="about-content">
+
                     <div class="about-text">
+
                         <div class="section-header">
+
                             <h2 class="section-title">About Moore Quality Builders</h2>
+
                             <p class="section-subtitle">Honest & Reliable Construction Services</p>
+
                         </div>
 
+
+
                         <div class="owner-intro">
+
                             <img src="{{ url_for('static', filename='images/owner-photo.jpg') }}" alt="Owner of Moore Quality Builders" class="owner-photo">
+
                             <div class="owner-text">
+
                                 <h3>Meet Michael Moore</h3>
+
                                 <p class="owner-title">Founder & Licensed Contractor</p>
+
                                 <p>With over 40 years of experience in San Diego construction, Michael founded Moore Quality Builders on the principles of honest work and reliable service. Every project receives his personal attention and commitment to quality.</p>
+
                             </div>
+
                         </div>
+
+
 
                         <p>Moore Quality Builders has been proudly serving San Diego County with exceptional construction and remodeling services. Our commitment to quality craftsmanship, honest business practices, and reliable service has made us a trusted name in the local construction industry.</p>
 
+
+
                         <p>We specialize in residential construction projects throughout San Diego County. Our experienced team combines time-tested building methods with modern techniques and materials to deliver results that exceed expectations.</p>
+
+
 
                         <p>Every project we undertake reflects our core values: <strong>INTEGRITY, QUALITY, CUSTOMER SATISFACTION</strong>. We're not just building structures; we're building lasting relationships with our clients and contributing to the beautiful communities of San Diego.</p>
 
+
+
                         <div class="credentials">
+
                             <p><strong>California Contractors License #882168</strong></p>
+
                             <p>Fully Licensed • Bonded • Insured</p>
+
                         </div>
+
                     </div>
+
                     <div class="about-stats">
+
                         <div class="stats-grid">
+
                             <div class="stat">
+
                                 <div class="stat-number">40+</div>
+
                                 <div class="stat-label">Years Experience</div>
+
                             </div>
+
                             <div class="stat">
+
                                 <div class="stat-number">100+</div>
+
                                 <div class="stat-label">Projects Completed</div>
+
                             </div>
+
                             <div class="stat">
+
                                 <div class="stat-number">100%</div>
+
                                 <div class="stat-label">Licensed & Insured</div>
+
                             </div>
+
                             <div class="stat">
+
                                 <div class="stat-number">5★</div>
+
                                 <div class="stat-label">Customer Rating</div>
+
                             </div>
+
                         </div>
+
                         <div class="service-areas">
+
                             <h4>Service Areas</h4>
+
                             <p>We proudly serve all of San Diego County including:</p>
+
                             <ul>
+
                                 <li>San Diego</li>
+
                                 <li>La Jolla</li>
+
                                 <li>Del Mar</li>
+
                                 <li>Rancho Bernardo</li>
+
                                 <li>Mission Valley</li>
+
                                 <li>Carmel Valley</li>
+
                                 <li>And surrounding areas</li>
+
                             </ul>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
 
+
+
         <section id="testimonials" class="testimonials">
+
             <div class="container">
+
                 <div class="section-header">
+
                     <h2 class="section-title">What Our Clients Say</h2>
+
                     <p class="section-subtitle"></p>
+
                 </div>
+
                 <div class="testimonials-grid">
+
                     <div class="testimonial-card">
+
                         <div class="testimonial-text">
+
                             <p>Moore Quality Builders did a complete remodel of our home and garage in Point Loma, San
+
 Diego. The house was in serious need of structural and cosmetic upgrades from foundation to
+
 roof line. Mike Moore is a serious full-Ame builder. He is very professional and knowledgeable in
+
 construction design and implementation and solving problems including deferred maintenance,
+
 bringing a structure up to code, updating and modernizing infrastructure and systems including
+
 plumbing, electrical, roofing, framing, windows, floors, interiors and exteriors. We especially
+
 appreciate his keen design sense and suggestions while he also listened and delivered what we
+
 asked for when we made suggestions and decisions. Mike and his crew are very peculiar about
+
 quality details. Corners are perfect, floors are level, measurements are exact and nothing is left
+
 unfinished. Mike Moore is very proactive and easy to work with. He brings solutions and
+
 suggestions to the table and worked with us to make each decision fit our vision and his
+
 exact standards. Mike Moore and crew show up every day. They work hard all day and clean
+
 up the job site at the end of each day. They are respectful of neighbors and became well known
+
 and well liked in our neighborhood. It was a pleasure to work with Mike Moore and his crews.
+
 We highly recommend Moor Quality Builders for residential building, remodeling, repairs and
+
 maintenance.</p>
+
                         </div>
+
                         <div class="testimonial-author">
+
                             <strong>Pam F.</strong>
+
                             <span>San Diego, CA</span>
+
                         </div>
+
                     </div>
+
                     <div class="testimonial-card">
+
                         <div class="testimonial-text">
+
                             <p>I engaged Michael and his team to do some wall related repair work at my SD home.
+
 From the first call he was responsive and timely. It is rare these days that contractors respond to texts or emails quickly.
+
 Michael did, and was on time for every meeting.
+
 The work started and finished on time and on budget. He even did a few things out of scope while he had the equipment available.
 
+
+
 Best building/contractor experience I have had.
+
 He's a real pro and the finished product was better than I had hoped.
 
+
+
 Great guy-- solid company.</p>
+
                         </div>
+
                         <div class="testimonial-author">
+
                             <strong>Allan Farwe</strong>
+
                             <span>San Diego, CA</span>
+
                         </div>
+
                     </div>
+
                     <div class="testimonial-card">
+
                         <div class="testimonial-text">
+
                             <p>I hired Michael to remodel my bathroom after one meeting.  I was so impressed with is eye for detail and his desire to do a great job.  He is a perfectionist and he always has the clients needs at the top of his mind.  He made sure I put the exhaust fan in a spot not too noticeable yet highly functional and lighting in the right place so that there wouldn't be shadows on my face while getting ready in the mirror.  I don't know any other contractors so conscientious and I know a lot of them.
+
+
 
         He is was always on time (usually early but waiting out side until the exact time), he was clean, fast, great workmanship, easy to work with, creative with ideas to make the project better and his prices are very reasonable.
 
+
+
         He is one you will be happy to refer to your friends and family and I have referred him several times.  Could write more but happy to talk to anyone.</p>
+
                         </div>
+
                         <div class="testimonial-author">
+
                             <strong>Anna Marie</strong>
+
                             <span>Sand and Sea Realty - San Diego, CA</span>
+
                         </div>
+
                     </div>
+
                     <div class="testimonial-card">
+
                         <div class="testimonial-text">
+
                             <p>Michael is so easy to work with: he is reliable, reasonable, and comes up with both the most efficient yet design forward ideas.  He has done multiple project on my house including renovating my bathroom.  He thoroughly explains process and leaves workspace clean.</p>
+
                         </div>
+
                         <div class="testimonial-author">
+
                             <strong>Jen L.</strong>
+
                             <span>San Diego, CA</span>
+
                         </div>
+
                     </div>
 
+
+
                     <div class="testimonial-card">
+
                         <div class="testimonial-text">
+
                             <p>My family and I needed a simple fence put in, and Moore Quality Builders were on the job. Michael is a friendly face with a good work ethic and meticulous craft. He takes his work seriously and charges very fairly. My family all loved him and his beautiful fence installment. I recommend him for any task, big and small, and I commend him on his attention to detail while also working quickly. Efficient and professional craft.</p>
+
                         </div>
+
                         <div class="testimonial-author">
+
                             <strong>Isabella L.</strong>
+
                             <span>San Diego, CA</span>
+
                         </div>
+
                     </div>
 
+
+
                     <div class="testimonial-card">
+
                         <div class="testimonial-text">
+
                             <p>Super professional, and skilled!  Cleaned up at job end.  Kind and patient with senior citizen home owner.</p>
+
                         </div>
+
                         <div class="testimonial-author">
+
                             <strong>Sarah B.</strong>
+
                             <span>San Francisco, CA</span>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section class="review-cta">
+
             <div class="container">
+
                 <div class="review-cta-content">
+
                     <div class="review-cta-text">
+
                         <h2>Worked With Us Before?</h2>
+
                         <p>We'd love to hear about your experience! Your feedback helps us improve and helps others find quality construction services in San Diego.</p>
+
                     </div>
+
                     <div class="review-cta-buttons">
+
                         <a href="https://www.google.com/search?sca_esv=808073c6bb6cc239&rlz=1C1ONGR_enUS1112US1112&sxsrf=AE3TifOd9a0La6PHOKT_IY4Qg5V-MeSWQg:1763418999948&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E9Qv-CQ5D6dmA_uZnDc9cuqvJjFxR-T03nZTDhtZfBqSeQolmeM7c2X8gzRr8f9QaoeuIBQbO2MlPq7ydPH9TPjp-a7mcw8LbeiG2SAkP6uNm9uQXA%3D%3D&q=Moore+Quality+Builders+Reviews&sa=X&ved=2ahUKEwjx5NPYn_qQAxWiDjQIHYBwBY8Q0bkNegQIHxAD&biw=1536&bih=695&dpr=1.25#" target="_blank" rel="noopener noreferrer" class="review-button google-review">
+
                             <span class="review-icon">⭐</span>
+
                             <div class="review-button-text">
+
                                 <strong>Review us on Google</strong>
+
                                 <span>Share your experience</span>
+
                             </div>
+
                         </a>
+
                         <a href="https://www.yelp.com/writeareview/biz/swf0YbGBdxPTHOIC2V-Fjg?return_url=%2Fbiz%2Fswf0YbGBdxPTHOIC2V-Fjg&review_origin=biz-details-war-button" target="_blank" rel="noopener noreferrer" class="review-button yelp-review">
+
                             <span class="review-icon">⭐</span>
+
                             <div class="review-button-text">
+
                                 <strong>Review us on Yelp</strong>
+
                                 <span>Rate your service</span>
+
                             </div>
+
                         </a>
+
                     </div>
+
                     <p class="review-cta-disclaimer">Thank you for choosing Moore Quality Builders!</p>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <section id="contact" class="contact">
+
             <div class="container">
+
                 <div class="section-header">
+
                     <h2 class="section-title">Get Your Free Estimate</h2>
+
                     <p class="section-subtitle">Contact us today to discuss your construction project</p>
+
                 </div>
+
                 <div class="contact-content">
+
                     <div class="contact-form">
+
                         <h3>Request Estimate</h3>
+
                         <form onsubmit="handleFormSubmit(event)">
+
                             <div class="form-row">
+
                                 <div class="form-group">
+
                                     <label for="name">Full Name *</label>
+
                                     <input type="text" id="name" name="name" required>
+
                                 </div>
+
                                 <div class="form-group">
+
                                     <label for="phone">Phone Number *</label>
+
                                     <input type="tel" id="phone" name="phone" required>
+
                                 </div>
+
                             </div>
+
                             <div class="form-group">
+
                                 <label for="email">Email Address *</label>
+
                                 <input type="email" id="email" name="email" required>
+
                             </div>
+
                             <div class="form-group">
+
                                 <label for="project">Project Description *</label>
+
                                 <textarea id="project" name="project" rows="4" placeholder="Please describe your construction or remodeling project..." required></textarea>
+
                             </div>
+
                             <button type="submit" class="cta-button">Send Request</button>
+
                         </form>
+
                     </div>
+
                     <div class="contact-info">
+
                         <h3>Contact Information</h3>
+
                         <div class="contact-details">
+
                             <div class="contact-item">
+
                                 <div class="contact-icon">📞</div>
+
                                 <div class="contact-text">
+
                                     <h4>Phone</h4>
+
                                     <p><a href="tel:6198071227">(619) 807-1227</a></p>
+
                                 </div>
+
                             </div>
+
                             <div class="contact-item">
+
                                 <div class="contact-icon">📧</div>
+
                                 <div class="contact-text">
+
                                     <h4>Email</h4>
+
                                     <p><a href="mailto:mooreqbuilders@gmail.com">mooreqbuilders@gmail.com</a></p>
+
                                 </div>
+
                             </div>
+
                             <div class="contact-item">
+
                                 <div class="contact-icon">📍</div>
+
                                 <div class="contact-text">
+
                                     <h4>Service Area</h4>
+
                                     <p>San Diego County, California</p>
+
                                 </div>
+
                             </div>
+
                             <div class="contact-item">
+
                                 <div class="contact-icon">🕐</div>
+
                                 <div class="contact-text">
+
                                     <h4>Business Hours</h4>
+
                                     <p>Monday - Friday: 7:00 AM - 6:00 PM<br>
+
                                     Saturday: 8:00 AM - 4:00 PM<br>
+
                                 </div>
+
                             </div>
+
                             <div class="contact-item">
+
                                 <div class="contact-icon">🗝️</div>
+
                                 <div class="contact-text">
+
                                     <h4>License</h4>
+
                                     <p>CA License #882168<br>
+
                                     Licensed • Bonded • Insured</p>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
+
+
     <footer>
+
         <div class="container">
+
             <div class="footer-content">
+
                 <div class="footer-info">
+
                     <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
+
                     <p>Licensed General Contractor • CA License #882168</p>
 
+
+
                     <div class="footer-credits">
+
                         <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
+
                         <p class="designer-credit">
+
                             Website by <a href="https://staticdesigns.dev/" target="_blank" rel="nofollow">Static Designs LLC</a>
+
                         </p>
+
                     </div>
+
                 </div>
+
                 <div class="footer-contact">
+
                     <p><strong>San Diego County Construction Services</strong></p>
+
                     <p>Phone: <a href="tel:6198071227">(619) 807-1227</a></p>
+
                     <p>Email: <a href="mailto:mooreqbuilders@gmail.com">mooreqbuilders@gmail.com</a></p>
+
                 </div>
+
             </div>
+
         </div>
+
     </footer>
 
+
+
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
+
 </html>
