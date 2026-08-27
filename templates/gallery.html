@@ -1,49 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5Z3BMY3ZX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{% extends "base.html" %}
 
-      gtag('config', 'G-S5Z3BMY3ZX');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Gallery | Moore Quality Builders San Diego</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% block title %}Project Gallery | Moore Quality Builders San Diego{% endblock %}
+{% block description %}View our portfolio of completed construction projects in San Diego. Browse kitchens, bathrooms, decks, doors, and custom construction work by Moore Quality Builders.{% endblock %}
+{% block keywords %}construction portfolio, San Diego projects, kitchen remodel gallery, bathroom renovation photos, deck construction, custom doors{% endblock %}
+{% block canonical %}https://moore-qualitybuilders.com/gallery{% endblock %}
+{% block og_url %}https://moore-qualitybuilders.com/gallery{% endblock %}
 
-    <meta name="description" content="View our portfolio of completed construction projects in San Diego. Browse kitchens, bathrooms, decks, doors, and custom construction work by Moore Quality Builders.">
-    <meta name="keywords" content="construction portfolio, San Diego projects, kitchen remodel gallery, bathroom renovation photos, deck construction, custom doors">
-    <link rel="canonical" href="https://moore-qualitybuilders.com/gallery">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
-</head>
-<body>
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">
-                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
-                </a>
-                <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="/#home">Home</a></li>
-                        <li><a href="/#services">Services</a></li>
-                        <li><a href="/gallery">Gallery</a></li>
-                        <li><a href="/#about">About</a></li>
-                        <li><a href="/blog">Resources</a></li>
-                        <li><a href="/#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- Gallery Hero -->
+{% block content %}
+<!-- Gallery Hero -->
         <section class="gallery-page-hero">
             <div class="hero-overlay"></div>
             <div class="container">
@@ -68,14 +32,24 @@
 
                 <!-- Dynamically Generated Categories -->
                 {% for category, data in gallery_data.items() %}
+                {% set category_loop = loop %}
                 <div class="gallery-category" data-category="{{ category }}">
                     <h2 class="category-title">{{ data.title }}</h2>
                     <div class="gallery-grid-masonry">
                         {% for image in data.images %}
+                        {%- set above_fold = category_loop.first and loop.index <= 3 %}
                         <div class="gallery-item">
-                            <img src="{{ image.path }}"
-                                 alt="{{ image.alt }}"
-                                 onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                            <picture>
+                                <source srcset="{{ image.thumb_webp }}" type="image/webp">
+                                <img src="{{ image.thumb_jpg }}"
+                                     data-full="{{ image.path }}"
+                                     alt="{{ image.alt }}"
+                                     {% if image.width %}width="{{ image.width }}" height="{{ image.height }}"{% endif %}
+                                     loading="{{ 'eager' if above_fold else 'lazy' }}"
+                                     {% if above_fold %}fetchpriority="high"{% endif %}
+                                     decoding="async"
+                                     onerror="this.src='/static/images/optimized/projects/slider/gallerySlide1.jpg'">
+                            </picture>
                             <div class="gallery-item-overlay">
                                 <h4>{{ image.title }}</h4>
                                 <p>{{ image.description }}</p>
@@ -96,30 +70,4 @@
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
-                     <p>Licensed General Contractor • CA License #882168</p>
-
-                    <div class="footer-credits">
-                        <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
-                        <p class="designer-credit">
-                            Website by <a href="https://staticdesigns.dev/" target="_blank" rel="nofollow">Static Designs LLC</a>
-                        </p>
-                    </div>                </div>
-                <div class="footer-contact">
-                    <p><strong>San Diego County Construction Services</strong></p>
-                    <p>Phone: <a href="tel:6198071227">(619) 807-1227</a></p>
-                    <p>Email: <a href="mailto:mooreqbuilders@gmail.com">mooreqbuilders@gmail.com</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+{% endblock %}

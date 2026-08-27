@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5Z3BMY3ZX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{% extends "base.html" %}
 
-      gtag('config', 'G-S5Z3BMY3ZX');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Guide to ADU Construction in San Diego County (2025) | Moore Quality Builders</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% block title %}Complete Guide to ADU Construction in San Diego County (2025) | Moore Quality Builders{% endblock %}
+{% block description %}Comprehensive guide to building an ADU in San Diego County. Learn about permits, costs, regulations, design, and timeline from licensed contractors.{% endblock %}
+{% block keywords %}ADU San Diego, accessory dwelling unit, granny flat, backyard cottage, ADU permits, ADU cost, San Diego construction{% endblock %}
+{% block canonical %}https://moore-qualitybuilders.com/blog/adu-construction-san-diego-guide{% endblock %}
+{% block og_url %}https://moore-qualitybuilders.com/blog/adu-construction-san-diego-guide{% endblock %}
 
-    <meta name="description" content="Comprehensive guide to building an ADU in San Diego County. Learn about permits, costs, regulations, design, and timeline from licensed contractors.">
-    <meta name="keywords" content="ADU San Diego, accessory dwelling unit, granny flat, backyard cottage, ADU permits, ADU cost, San Diego construction">
-    <link rel="canonical" href="https://moore-qualitybuilders.com/blog/adu-construction-san-diego-guide">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
-
-    <script type="application/ld+json">
+{% block head_extra %}
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -41,31 +28,10 @@
       "datePublished": "2025-01-15"
     }
     </script>
-</head>
-<body>
-    <header id="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">
-                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders Logo" class="logo-img">
-                </a>
-                 <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="/#home">Home</a></li>
-                        <li><a href="/#services">Services</a></li>
-                        <li><a href="/#gallery">Gallery</a></li>
-                        <li><a href="/#about">About</a></li>
-                        <li><a href="/blog">Resources</a></li>
-                        <li><a href="/#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+{% endblock %}
 
-    <main>
-        <!-- Article Header -->
+{% block content %}
+<!-- Article Header -->
         <article class="blog-post">
             <div class="blog-post-header">
                 <div class="container">
@@ -83,7 +49,7 @@
 
             <!-- Featured Image -->
             <div class="blog-post-featured-image">
-                <img src="/static/images/blog/adu-hero.jpg" alt="Modern ADU in San Diego" onerror="this.src='/static/images/projects/slider/gallerySlide1.jpg'">
+                <img src="/static/images/blog/adu-hero.jpg" alt="Modern ADU in San Diego" onerror="this.src='/static/images/optimized/projects/slider/gallerySlide1.jpg'">
             </div>
 
             <!-- Article Content -->
@@ -376,16 +342,16 @@
                         <h3>Related Resources</h3>
                         <div class="related-grid">
                             <div class="related-card">
-                                <h4>Kitchen Remodeling Costs</h4>
-                                <p>Coming soon - Detailed pricing guide for San Diego</p>
+                                <h4><a href="/blog/kitchen-remodel-cost-guide">Kitchen Remodeling Costs</a></h4>
+                                <p>Real 2025 pricing breakdown for kitchen renovations—materials, labor, and what drives the final number.</p>
                             </div>
                             <div class="related-card">
-                                <h4>Permit Guide</h4>
-                                <p>Coming soon - Navigate the permit process</p>
+                                <h4><a href="/blog/home-remodeling-permit-guide">Home Remodeling Permit Guide</a></h4>
+                                <p>Which projects need permits, how to apply, what inspections to expect, and the cost of skipping them.</p>
                             </div>
                             <div class="related-card">
-                                <h4>Home Additions</h4>
-                                <p>Coming soon - Expand your living space</p>
+                                <h4><a href="/blog/bathroom-remodel-cost-guide">Bathroom Remodel Cost Guide</a></h4>
+                                <p>Pricing breakdowns for bathroom renovations—tile, showers, vanities, and full project estimates.</p>
                             </div>
                         </div>
                     </div>
@@ -393,31 +359,4 @@
                 </div>
             </div>
         </article>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="footer-logo">
-                     <p>Licensed General Contractor • CA License #882168</p>
-
-                    <div class="footer-credits">
-                        <p>&copy; 2025 Moore Quality Builders. All rights reserved.</p>
-                        <p class="designer-credit">
-                            Website by <a href="https://staticdesigns.dev/" target="_blank" rel="nofollow">Static Designs LLC</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="footer-contact">
-                    <p><strong>San Diego County Construction Services</strong></p>
-                    <p>Phone: <a href="tel:6198071227">(619) 807-1227</a></p>
-                    <p>Email: <a href="mailto:mooreqbuilders@gmail.com">mooreqbuilders@gmail.com</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+{% endblock %}

@@ -5,9 +5,11 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
     envVars:
+      # sync: false means Render prompts for the value and never overwrites one
+      # already set in the dashboard.
       - key: SECRET_KEY
-       sync: false
-      - key: MAIL_USERNAME
-       sync: false
-      - key: MAIL_PASSWORD
-       sync: false
+        sync: false
+      - key: MAILJET_API_KEY
+        sync: false
+      - key: MAILJET_SECRET_KEY
+        sync: false
