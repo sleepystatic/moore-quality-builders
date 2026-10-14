@@ -6,6 +6,19 @@
 {% block canonical %}https://moore-qualitybuilders.com/gallery{% endblock %}
 {% block og_url %}https://moore-qualitybuilders.com/gallery{% endblock %}
 
+{% block head_extra %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://moore-qualitybuilders.com" },
+        { "@type": "ListItem", "position": 2, "name": "Project Gallery", "item": "https://moore-qualitybuilders.com/gallery" }
+      ]
+    }
+    </script>
+{% endblock %}
+
 {% block content %}
 <!-- Gallery Hero -->
         <section class="gallery-page-hero">

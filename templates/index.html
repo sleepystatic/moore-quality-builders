@@ -7,22 +7,87 @@
 {% block og_url %}https://moore-qualitybuilders.com{% endblock %}
 
 {% block head_extra %}
-<script type="application/ld+json">
+<link rel="preload" as="image" href="/static/images/optimized/projects/hero-background-1600.webp" type="image/webp" fetchpriority="high">
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "GeneralContractor",
+      "@id": "https://moore-qualitybuilders.com/#business",
       "name": "Moore Quality Builders",
-      "description": "Professional construction and remodeling services in San Diego County",
+      "description": "Licensed general contractor serving San Diego County since 2009. Custom home building, ADUs, kitchen and bathroom remodeling, decks, and home repairs.",
       "url": "https://moore-qualitybuilders.com",
-      "telephone": "(619) 807-1227",
+      "telephone": "+1-619-807-1227",
+      "email": "mooreqbuilders@gmail.com",
+      "foundingDate": "2009",
+      "priceRange": "$$",
+      "currenciesAccepted": "USD",
+      "logo": "https://moore-qualitybuilders.com/static/images/mqbLogo.png",
+      "image": "https://moore-qualitybuilders.com/static/images/optimized/projects/slider/gallerySlide1.jpg",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "San Diego",
         "addressRegion": "CA",
         "addressCountry": "US"
       },
-      "areaServed": "San Diego County",
-      "priceRange": "$$"
+      "sameAs": [
+        "https://www.yelp.com/biz/swf0YbGBdxPTHOIC2V-Fjg"
+      ],
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "San Diego County, California" },
+        { "@type": "City", "name": "San Diego" },
+        { "@type": "City", "name": "La Jolla" },
+        { "@type": "City", "name": "Del Mar" },
+        { "@type": "Place", "name": "Rancho Bernardo" },
+        { "@type": "Place", "name": "Mission Valley" },
+        { "@type": "Place", "name": "Carmel Valley" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "16:00"
+        }
+      ],
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "California Contractors State License Board",
+        "identifier": "882168"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Michael Moore",
+        "jobTitle": "Founder & Licensed Contractor"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Construction Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Home Building", "description": "New custom home construction and ADUs from foundation to finish in San Diego County." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ADU Construction", "description": "Accessory dwelling unit design and construction across San Diego County." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kitchen Remodeling", "description": "Full kitchen renovations including cabinetry, countertops and finish carpentry." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bathroom Remodeling", "description": "Bathroom renovations including tile, plumbing and fixture installation." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deck Construction", "description": "Custom deck design and construction for San Diego homes." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Doors & Windows", "description": "Door and window installation and replacement." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Repairs", "description": "Drywall, painting, electrical, plumbing and carpentry repairs." } }
+        ]
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://moore-qualitybuilders.com/#website",
+      "url": "https://moore-qualitybuilders.com",
+      "name": "Moore Quality Builders",
+      "publisher": { "@id": "https://moore-qualitybuilders.com/#business" }
     }
     </script>
 {% endblock %}
@@ -31,10 +96,12 @@
 <section id="home" class="hero">
             <div class="hero-overlay"></div>
             <div class="container">
-                <img src="{{ url_for('static', filename='images/mqbLogo.png') }}" alt="Moore Quality Builders" class="hero-logo-header">
+                <img src="{{ url_for('static', filename='images/mqbLogo.webp') }}" alt="" class="hero-logo-header" width="417" height="286">
                 <div class="hero-content">
-                    <h1>Professional Construction Services</h1>
-                    <p class="hero-subtitle">Serving San Diego County with Quality Craftsmanship Since 2009</p>
+                    {#- The H1 is the strongest on-page relevance signal; it carried no
+                        location at all, so it said nothing about where we work. -#}
+                    <h1>San Diego Construction &amp; Remodeling Contractor</h1>
+                    <p class="hero-subtitle">Licensed general contractor serving San Diego County with quality craftsmanship since 2009</p>
                     <div class="hero-features">
                         <div class="feature">
                             <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>
@@ -71,8 +138,8 @@
                             <li>Design consultation</li>
                             <li>Architectural drawings</li>
                             <li>Structural engineering</li>
-
                         </ul>
+                        <p class="service-link"><a href="/blog/adu-construction-san-diego-guide">Read our San Diego ADU construction guide</a></p>
                     </div>
                     <div class="service-card">
                         <div class="service-header">
@@ -85,6 +152,7 @@
                             <li>Room additions</li>
                             <li>Interior/Exterior renovations</li>
                         </ul>
+                        <p class="service-link"><a href="/blog/kitchen-remodel-cost-guide">Kitchen remodel costs</a> &middot; <a href="/blog/bathroom-remodel-cost-guide">Bathroom remodel costs</a></p>
                     </div>
                     <div class="service-card">
                         <div class="service-header">
@@ -96,6 +164,7 @@
                             <li>Maintenance services</li>
                             <li>Drywall, painting, electrical, plumbing, and carpentry repairs</li>
                         </ul>
+                        <p class="service-link"><a href="/blog/home-remodeling-permit-guide">Do you need a permit? Read our guide</a></p>
                     </div>
                 </div>
             </div>
@@ -110,11 +179,10 @@
                 <div class="gallery-slider">
                     <div class="slide active">
                         <picture>
-                            <source srcset="/static/images/optimized/projects/slider/gallerySlide1.webp" type="image/webp">
+                            <source srcset="/static/images/optimized/projects/slider/gallerySlide1-800.webp 800w, /static/images/optimized/projects/slider/gallerySlide1.webp 1600w" sizes="(max-width: 800px) 100vw, 1200px" type="image/webp">
                             <img src="/static/images/optimized/projects/slider/gallerySlide1.jpg"
                                  alt="Custom Home Construction"
-                                 loading="eager"
-                                 fetchpriority="high"
+                                 loading="lazy"
                                  decoding="async">
                         </picture>
                         <div class="slide-info">
@@ -124,7 +192,7 @@
                     </div>
                     <div class="slide">
                         <picture>
-                            <source srcset="/static/images/optimized/projects/slider/gallerySlide2.webp" type="image/webp">
+                            <source srcset="/static/images/optimized/projects/slider/gallerySlide2-800.webp 800w, /static/images/optimized/projects/slider/gallerySlide2.webp 1600w" sizes="(max-width: 800px) 100vw, 1200px" type="image/webp">
                             <img src="/static/images/optimized/projects/slider/gallerySlide2.jpg"
                                  alt="Kitchen Remodeling"
                                  loading="lazy"
@@ -137,7 +205,7 @@
                     </div>
                     <div class="slide">
                         <picture>
-                            <source srcset="/static/images/optimized/projects/slider/gallerySlide3.webp" type="image/webp">
+                            <source srcset="/static/images/optimized/projects/slider/gallerySlide3-800.webp 800w, /static/images/optimized/projects/slider/gallerySlide3.webp 1600w" sizes="(max-width: 800px) 100vw, 1200px" type="image/webp">
                             <img src="/static/images/optimized/projects/slider/gallerySlide3.jpg"
                                  alt="Commercial Reconstruction"
                                  loading="lazy"
@@ -156,6 +224,7 @@
                     <button class="gallery-nav prev" onclick="changeSlide(-1)" aria-label="Previous project">‹</button>
                     <button class="gallery-nav next" onclick="changeSlide(1)" aria-label="Next project">›</button>
                 </div>
+                    <p class="section-cta"><a href="/gallery">Browse all our San Diego projects &rarr;</a></p>
             </div>
         </section>
 
@@ -210,7 +279,7 @@
                                 <div class="stat-label">Licensed & Insured</div>
                             </div>
                             <div class="stat">
-                                <div class="stat-number">5<svg class="icon icon-inline" aria-hidden="true"><use href="#i-star"/></svg><span class="sr-only"> star rating</span></div>
+                                <div class="stat-number">5<svg class="icon icon-star icon-inline" aria-hidden="true"><use href="#i-star"/></svg><span class="sr-only"> star rating</span></div>
                                 <div class="stat-label">Customer Rating</div>
                             </div>
                         </div>
@@ -246,7 +315,7 @@
                     <article class="testimonial-card">
                         {% if review.rating %}
                         <div class="testimonial-rating" role="img" aria-label="{{ review.rating }} out of 5 stars">
-                            {% for _ in range(review.rating) %}<svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>{% endfor %}
+                            {% for _ in range(review.rating) %}<svg class="icon icon-star" aria-hidden="true"><use href="#i-star"/></svg>{% endfor %}
                         </div>
                         {% endif %}
                         <blockquote class="testimonial-text">
@@ -275,14 +344,14 @@
                     </div>
                     <div class="review-cta-buttons">
                         <a href="https://www.google.com/search?sca_esv=808073c6bb6cc239&rlz=1C1ONGR_enUS1112US1112&sxsrf=AE3TifOd9a0La6PHOKT_IY4Qg5V-MeSWQg:1763418999948&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E9Qv-CQ5D6dmA_uZnDc9cuqvJjFxR-T03nZTDhtZfBqSeQolmeM7c2X8gzRr8f9QaoeuIBQbO2MlPq7ydPH9TPjp-a7mcw8LbeiG2SAkP6uNm9uQXA%3D%3D&q=Moore+Quality+Builders+Reviews&sa=X&ved=2ahUKEwjx5NPYn_qQAxWiDjQIHYBwBY8Q0bkNegQIHxAD&biw=1536&bih=695&dpr=1.25#" target="_blank" rel="noopener noreferrer" class="review-button google-review">
-                            <span class="review-icon"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span>
+                            <span class="review-icon"><svg class="icon icon-star" aria-hidden="true"><use href="#i-star"/></svg></span>
                             <div class="review-button-text">
                                 <strong>Review us on Google</strong>
                                 <span>Share your experience</span>
                             </div>
                         </a>
                         <a href="https://www.yelp.com/writeareview/biz/swf0YbGBdxPTHOIC2V-Fjg?return_url=%2Fbiz%2Fswf0YbGBdxPTHOIC2V-Fjg&review_origin=biz-details-war-button" target="_blank" rel="noopener noreferrer" class="review-button yelp-review">
-                            <span class="review-icon"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span>
+                            <span class="review-icon"><svg class="icon icon-star" aria-hidden="true"><use href="#i-star"/></svg></span>
                             <div class="review-button-text">
                                 <strong>Review us on Yelp</strong>
                                 <span>Rate your service</span>

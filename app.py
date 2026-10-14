@@ -245,6 +245,44 @@ GALLERY_CATEGORIES = {
     'custom': ('Custom Construction Projects', 'Custom Construction Work'),
 }
 
+# Alt text was a single string repeated per category -- 26 images all read
+# "Custom Construction Work San Diego". That is unhelpful to anyone using a
+# screen reader and reads as keyword stuffing. These rotate so every image gets
+# a distinct, natural sentence. Per-photo copy written by someone who has seen
+# each image would still be better.
+ALT_PHRASINGS = {
+    'kitchens': [
+        'Completed kitchen remodel in San Diego County',
+        'Custom kitchen cabinetry and countertop installation',
+        'Finished kitchen renovation by Moore Quality Builders',
+        'Kitchen remodel showing custom finish carpentry',
+    ],
+    'bathrooms': [
+        'Completed bathroom renovation in San Diego County',
+        'Custom bathroom tile and fixture installation',
+        'Finished bathroom remodel by Moore Quality Builders',
+        'Bathroom renovation with custom vanity and tilework',
+    ],
+    'decks': [
+        'Custom deck construction in San Diego County',
+        'Finished deck build by Moore Quality Builders',
+        'Custom outdoor deck with railing and framing',
+        'Completed deck project showing framing detail',
+    ],
+    'doors': [
+        'Door and window installation in San Diego County',
+        'Custom door installation by Moore Quality Builders',
+        'Replacement window fitting and trim work',
+        'Finished entry door installation with custom trim',
+    ],
+    'custom': [
+        'Custom construction project in San Diego County',
+        'Custom carpentry and framing by Moore Quality Builders',
+        'Completed custom build showing structural work',
+        'Custom construction detail and finish work',
+    ],
+}
+
 THUMB_MANIFEST_PATH = os.path.join('static', 'images', 'gallery-thumbs', 'manifest.json')
 
 _gallery_cache = None
@@ -300,7 +338,9 @@ def _build_gallery_data():
                     'thumb_jpg': thumb_jpg,
                     'width': size[0] if size else None,
                     'height': size[1] if size else None,
-                    'alt': f'{description} San Diego',
+                    'alt': '%s (project %d)' % (
+                        ALT_PHRASINGS[category][len(images) % len(ALT_PHRASINGS[category])],
+                        len(images) + 1),
                     'title': description,
                     'description': 'Professional craftsmanship',
                 })

@@ -29,8 +29,6 @@
     /* Layout --------------------------------------------------------- */
     --container:        1200px;
     --header-h:         72px;     /* drives the header, hero offset and mobile sheet */
-    --header-h-scrolled: 60px;
-    --header-h-mobile:  64px;
 
     /* Radii, shadow, motion ------------------------------------------ */
     --radius:           8px;
@@ -163,11 +161,6 @@ body > header {
     justify-content: space-between;
     gap: 1.5rem;
     height: var(--header-h);
-    transition: height var(--ease);
-}
-
-.header-scroll .header-content {
-    height: var(--header-h-scrolled);
 }
 
 .logo {
@@ -180,11 +173,6 @@ body > header {
     height: auto;
     max-height: calc(var(--header-h) - 18px);
     width: auto;
-    transition: max-height var(--ease);
-}
-
-.header-scroll .logo-img {
-    max-height: calc(var(--header-h-scrolled) - 14px);
 }
 
 /* --- Nav ----------------------------------------------------------- */
@@ -352,7 +340,6 @@ body > header {
 @media (max-width: 900px) {
     :root {
         --header-h: 64px;
-        --header-h-scrolled: 60px;
     }
 
     .hamburger {
@@ -458,6 +445,9 @@ body > header {
 .hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url('/static/images/optimized/projects/hero-background.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                image-set(url('/static/images/optimized/projects/hero-background-1600.webp') type('image/webp'),
+                          url('/static/images/optimized/projects/hero-background.jpg') type('image/jpeg'));
     background-size: cover;
     background-position: center;
     height: 90vh;
@@ -1240,6 +1230,9 @@ body > footer {
 .blog-hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url('/static/images/optimized/projects/hero-background.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                image-set(url('/static/images/optimized/projects/hero-background-1600.webp') type('image/webp'),
+                          url('/static/images/optimized/projects/hero-background.jpg') type('image/jpeg'));
     background-size: cover;
     background-position: center;
     padding: 8rem 0 4rem 0;
@@ -1847,6 +1840,9 @@ body > footer {
 .gallery-page-hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
                 url('/static/images/optimized/projects/hero-background.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                image-set(url('/static/images/optimized/projects/hero-background-1600.webp') type('image/webp'),
+                          url('/static/images/optimized/projects/hero-background.jpg') type('image/jpeg'));
     background-size: cover;
     background-position: center;
     padding: 8rem 0 4rem 0;
@@ -2223,9 +2219,10 @@ body > footer {
     vertical-align: -0.125em;
 }
 
-/* Stars read better solid than outlined. */
-.review-icon .icon,
-.stat-number .icon {
+/* Stars read solid, not outlined -- a hollow star reads as "unrated".
+   Keyed to the icon itself rather than its container, so a star dropped into a
+   new context stays filled. */
+.icon-star {
     fill: currentColor;
     stroke: none;
 }
@@ -2358,13 +2355,6 @@ html {
 
     .container {
         padding: 0 15px;
-    }
-
-    .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 2px 0;
     }
 
     .hero {
@@ -2817,4 +2807,25 @@ html {
     background: #fdeceb;
     color: #a32b20;
     border-left: 4px solid var(--danger);
+}
+
+
+/* ========================================
+   CONTEXTUAL INTERNAL LINKS
+   ======================================== */
+.service-link {
+    margin: 1rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.section-cta {
+    margin: 1.75rem 0 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.section-cta a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
