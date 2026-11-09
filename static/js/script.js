@@ -356,6 +356,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===================================
+    // 7. LEAD TRACKING
+    // ===================================
+    // GA4 was recording pageviews only, so there was no way to tell whether the
+    // site produced one lead a month or twenty, or which pages produced them.
+    // These are the three things a visitor can actually do to make contact.
+    function trackLead(action, detail) {
+        if (typeof gtag !== 'function') return;   // blocked or not yet loaded
+        gtag('event', action, {
+            event_category: 'lead',
+            event_label: detail || '',
+            page_path: window.location.pathname
+        });
+    }
+    window.trackLead = trackLead;
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            // Where on the page the tap came from, so the header button and the
+            // contact section can be told apart.
+            const where = link.closest('header') ? 'header'
+                        : link.closest('footer') ? 'footer'
+                        : link.closest('.contact') ? 'contact-section'
+                        : 'body';
+            trackLead('click_to_call', where);
+        });
+    });
+
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', () => trackLead('email_click', 'mailto'));
+    });
+
 }); // End DOMContentLoaded
 
 // ===================================
@@ -377,9 +409,11 @@ function handleFormSubmit(event) {
 
     // novalidate is on the form so the browser does not pop its own bubble
     // before we can show a message in place.
+    // The project description is not required, so only the starred fields can
+    // land here.
     const firstInvalid = form.querySelector(':invalid');
     if (firstInvalid) {
-        setStatus('Please fill in every field before sending.', 'error');
+        setStatus('Please fill in your name, phone, and email before sending.', 'error');
         firstInvalid.focus();
         return;
     }
@@ -399,6 +433,10 @@ function handleFormSubmit(event) {
 
         if (data.status === 'success') {
             setStatus(data.message, 'success');
+            // Only counted once the server confirms it actually went out.
+            if (typeof window.trackLead === 'function') {
+                window.trackLead('generate_lead', 'estimate_form');
+            }
             form.reset();
         } else {
             // The server says the send failed. Show its wording, which carries

@@ -170,6 +170,39 @@
             </div>
         </section>
 
+        {#- Price band. Homeowners filter hard on price, and the site carried no
+            dollar figure anywhere while the cost guides under /blog carried
+            dozens -- the numbers existed, just not where people decide.
+            Figures come from PRICE_GUIDE in app.py, which quotes those guides. -#}
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">What Projects Typically Cost</h2>
+                    <p class="section-subtitle">Real San Diego ranges from our own cost guides, so you can budget before you call</p>
+                </div>
+                <div class="pricing-grid">
+                    {% for item in price_guide %}
+                    <div class="pricing-card">
+                        <div class="pricing-head">
+                            <div class="pricing-icon"><svg class="icon" aria-hidden="true"><use href="#{{ item.icon }}"/></svg></div>
+                            <h3>{{ item.label }}</h3>
+                        </div>
+                        <p class="pricing-figure">{{ item.typical }}</p>
+                        <p class="pricing-figure-note">{{ item.typical_note }}</p>
+                        <ul class="pricing-notes">
+                            {% for note in item.notes %}
+                            <li>{{ note }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p class="pricing-link"><a href="{{ item.href }}">{{ item.link_text }} &rarr;</a></p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <p class="pricing-disclaimer">Every project is different, so these are ranges from our guides rather than quotes. Your estimate is free and there's no obligation.</p>
+                <p class="section-cta"><a href="#contact">Get a free estimate for your project &rarr;</a></p>
+            </div>
+        </section>
+
         <section id="gallery" class="gallery">
             <div class="container">
                 <div class="section-header">
@@ -387,9 +420,15 @@
                                 <label for="email">Email Address *</label>
                                 <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
                             </div>
+                            {#- Deliberately optional. Requiring a written description
+                                before anyone has spoken to a person was the heaviest ask
+                                on the page; the details come out on the callback. -#}
                             <div class="form-group">
-                                <label for="project">Project Description *</label>
-                                <textarea id="project" name="project" rows="4" placeholder="Please describe your construction or remodeling project..." required></textarea>
+                                <label for="project">
+                                    Project Description
+                                    <span class="form-optional">optional</span>
+                                </label>
+                                <textarea id="project" name="project" rows="3" placeholder="A sentence is plenty &mdash; e.g. &ldquo;kitchen remodel in Point Loma&rdquo;. Or leave it blank and we'll ask when we call."></textarea>
                             </div>
 
                             {#- Honeypot. Hidden from people, irresistible to bots; the server

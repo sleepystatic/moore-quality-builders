@@ -13,3 +13,15 @@ services:
         sync: false
       - key: MAILJET_SECRET_KEY
         sync: false
+      # SMS lead alerts. Left commented out on purpose: a sync:false key makes
+      # Render prompt for a value at blueprint time, and these are optional.
+      # Add whichever set you use straight in the Render dashboard instead.
+      #
+      # Twilio (reliable, ~$1.15/mo for the number plus ~$0.008 a message):
+      #   TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, ALERT_SMS_TO
+      #
+      # Or, free: ALERT_SMS_EMAIL set to the carrier's email-to-SMS address,
+      #   e.g. 6198071227@vtext.com (Verizon), @txt.att.net (AT&T),
+      #   @tmomail.net (T-Mobile). Carriers sometimes filter these.
+      #
+      # With none of them set, lead emails behave exactly as before.

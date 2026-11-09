@@ -1,6 +1,9 @@
+import base64
 import json
 import logging
 import os
+import urllib.parse
+import urllib.request
 
 from flask import Flask, render_template, jsonify, request, redirect, Response
 from mailjet_rest import Client
@@ -18,35 +21,116 @@ logging.basicConfig(level=logging.INFO)
 FALLBACK_MESSAGE = ("We couldn't send your request just now. "
                     "Please call us at (619) 807-1227 and we'll get right back to you.")
 
+# Shown in the lead email when the visitor left the description blank. The
+# field is optional on purpose, so this is the normal case, not a problem.
+NO_PROJECT_TEXT = 'Not provided - ask when you call back.'
 
 
-@app.route('/submit-estimate', methods=['POST'])
-def submit_estimate():
-    name = request.form.get('name', '').strip()
-    email = request.form.get('email', '').strip()
-    phone = request.form.get('phone', '').strip()
-    project = request.form.get('project', '').strip()
+def _mailjet():
+    return Client(
+        auth=(os.getenv('MAILJET_API_KEY'), os.getenv('MAILJET_SECRET_KEY')),
+        version='v3.1'
+    )
 
-    # Honeypot: the matching field is hidden from people, so anything in it came
-    # from a bot. Answer as though it worked rather than telling it what failed.
-    if request.form.get('company', '').strip():
-        app.logger.info('Discarded honeypot submission from %s', request.remote_addr)
-        return jsonify({'status': 'success', 'message': 'Thank you! Your request has been sent.'})
 
-    if not all([name, email, phone, project]):
-        return jsonify({'status': 'error', 'message': 'All fields are required.'})
+# ---------------------------------------------------------------------------
+# Lead alerts
+#
+# Homeowners contact three or four contractors and hire whoever calls back
+# first, so a lead has to reach a phone, not only an inbox that gets checked a
+# few times a day.
+#
+# Two transports, chosen from whichever environment variables are set, so the
+# provider can be swapped without touching this file:
+#
+#   Twilio           TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM,
+#                    ALERT_SMS_TO
+#                    ~$1.15/month for the number plus ~$0.008 a message, and
+#                    it actually arrives. Uses urllib so there is no new
+#                    dependency to install.
+#
+#   Carrier gateway  ALERT_SMS_EMAIL, e.g. 6198071227@vtext.com (Verizon),
+#                    @txt.att.net (AT&T), @tmomail.net (T-Mobile)
+#                    Free, reuses Mailjet, but carriers increasingly filter
+#                    mail from bulk senders. Fine as a stopgap.
+#
+# With neither set nothing is sent and the email path behaves exactly as it did
+# before, so this is safe to deploy before the account exists.
+# ---------------------------------------------------------------------------
 
-    if '@' not in email or '.' not in email:
-        return jsonify({'status': 'error', 'message': 'Please enter a valid email address.'})
+SMS_BODY_LIMIT = 300  # roughly two segments; carriers stitch them back together
 
+
+def _sms_body(name, phone, email, project):
+    """Short enough to read on a lock screen, with the number early to tap."""
+    lines = ['MQB lead: %s' % name, phone, email]
+    if project:
+        lines.append(project)
+    body = '\n'.join(lines)
+    if len(body) > SMS_BODY_LIMIT:
+        body = body[:SMS_BODY_LIMIT - 3].rstrip() + '...'
+    return body
+
+
+def _send_lead_sms(name, phone, email, project):
+    """Text the lead to the owner. Returns True only if a message went out.
+
+    Never raises: a texting problem must not cost us the lead.
+    """
+    body = _sms_body(name, phone, email, project)
+
+    sid = os.getenv('TWILIO_ACCOUNT_SID')
+    token = os.getenv('TWILIO_AUTH_TOKEN')
+    sms_from = os.getenv('TWILIO_FROM')
+    sms_to = os.getenv('ALERT_SMS_TO')
+
+    if sid and token and sms_from and sms_to:
+        try:
+            payload = urllib.parse.urlencode(
+                {'From': sms_from, 'To': sms_to, 'Body': body}).encode()
+            credentials = base64.b64encode(('%s:%s' % (sid, token)).encode()).decode()
+            req = urllib.request.Request(
+                'https://api.twilio.com/2010-04-01/Accounts/%s/Messages.json' % sid,
+                data=payload,
+                headers={'Authorization': 'Basic ' + credentials,
+                         'Content-Type': 'application/x-www-form-urlencoded'},
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                if resp.status in (200, 201):
+                    app.logger.info('Lead SMS sent via Twilio')
+                    return True
+                app.logger.error('Twilio returned HTTP %s for lead SMS', resp.status)
+        except Exception:
+            app.logger.exception('Twilio lead SMS failed')
+
+    gateway = os.getenv('ALERT_SMS_EMAIL')
+    if gateway:
+        try:
+            result = _mailjet().send.create(data={'Messages': [{
+                'From': {'Email': 't.bryan.dev@gmail.com', 'Name': 'MQB Website'},
+                'To': [{'Email': gateway}],
+                'Subject': 'New lead',
+                'TextPart': body,
+            }]})
+            if result.status_code == 200:
+                app.logger.info('Lead SMS sent via carrier gateway')
+                return True
+            app.logger.error('Carrier gateway rejected lead SMS (HTTP %s)',
+                             result.status_code)
+        except Exception:
+            app.logger.exception('Carrier gateway lead SMS failed')
+
+    return False
+
+
+def _send_lead_email(name, email, phone, project):
+    """Email the lead to the owner. Returns True only if Mailjet accepted it.
+
+    Never raises; logs the whole lead on failure so it stays recoverable.
+    """
     try:
-        # Initialize Mailjet client
-        mailjet = Client(
-            auth=(os.getenv('MAILJET_API_KEY'), os.getenv('MAILJET_SECRET_KEY')),
-            version='v3.1'
-        )
+        mailjet = _mailjet()
 
-        # Prepare email data
         data = {
             'Messages': [
                 {
@@ -74,7 +158,7 @@ def submit_estimate():
                             </div>
                             <div style="background: white; padding: 20px; border-radius: 8px;">
                                 <p style="margin: 0 0 10px 0;"><strong>Project Description:</strong></p>
-                                <p style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 0;">{project}</p>
+                                <p style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 0;">{project or NO_PROJECT_TEXT}</p>
                             </div>
                         </div>
                         <div style="background: #2c3e50; color: white; padding: 15px; text-align: center; font-size: 12px;">
@@ -90,8 +174,7 @@ def submit_estimate():
         result = mailjet.send.create(data=data)
 
         if result.status_code == 200:
-            app.logger.info('Estimate request sent for %s <%s>', name, email)
-            return jsonify({'status': 'success', 'message': 'Thank you! Your request has been sent.'})
+            return True
 
         try:
             detail = result.json()
@@ -99,19 +182,60 @@ def submit_estimate():
             detail = '<unparseable response body>'
 
         # Mailjet refused the send. Log the whole lead so it stays recoverable
-        # from the server logs, then tell the visitor the truth.
+        # from the server logs.
         app.logger.error(
             'Mailjet rejected estimate request (HTTP %s): %s | LEAD name=%r email=%r phone=%r project=%r',
             result.status_code, detail, name, email, phone, project
         )
-        return jsonify({'status': 'error', 'message': FALLBACK_MESSAGE})
+        return False
 
     except Exception:
         app.logger.exception(
             'Estimate request failed to send | LEAD name=%r email=%r phone=%r project=%r',
             name, email, phone, project
         )
-        return jsonify({'status': 'error', 'message': FALLBACK_MESSAGE})
+        return False
+
+
+@app.route('/submit-estimate', methods=['POST'])
+def submit_estimate():
+    name = request.form.get('name', '').strip()
+    email = request.form.get('email', '').strip()
+    phone = request.form.get('phone', '').strip()
+    project = request.form.get('project', '').strip()
+
+    # Honeypot: the matching field is hidden from people, so anything in it came
+    # from a bot. Answer as though it worked rather than telling it what failed.
+    if request.form.get('company', '').strip():
+        app.logger.info('Discarded honeypot submission from %s', request.remote_addr)
+        return jsonify({'status': 'success', 'message': 'Thank you! Your request has been sent.'})
+
+    # project is deliberately NOT required. Asking someone to write a paragraph
+    # about their project before they have spoken to anyone was the heaviest ask
+    # on the page; the details come out on the callback anyway.
+    if not all([name, email, phone]):
+        return jsonify({'status': 'error',
+                        'message': 'Please fill in your name, phone, and email.'})
+
+    if '@' not in email or '.' not in email:
+        return jsonify({'status': 'error', 'message': 'Please enter a valid email address.'})
+
+    # Both are attempted, independently. If Mailjet is down but texting works,
+    # the lead still reaches Michael and the visitor is told the truth.
+    emailed = _send_lead_email(name, email, phone, project)
+    texted = _send_lead_sms(name, phone, email, project)
+
+    if emailed or texted:
+        app.logger.info('Estimate request delivered for %s <%s> (email=%s sms=%s)',
+                        name, email, emailed, texted)
+        return jsonify({'status': 'success',
+                        'message': 'Thank you! Your request has been sent.'})
+
+    app.logger.error(
+        'Estimate request undeliverable by every transport | LEAD name=%r email=%r phone=%r project=%r',
+        name, email, phone, project
+    )
+    return jsonify({'status': 'error', 'message': FALLBACK_MESSAGE})
 
 
 @app.before_request
@@ -124,7 +248,7 @@ def redirect_old_domain():
 
 @app.route('/')
 def index():
-    return render_template('index.html', reviews=REVIEWS)
+    return render_template('index.html', reviews=REVIEWS, price_guide=PRICE_GUIDE)
 
 
 @app.route('/blog')
@@ -233,6 +357,56 @@ REVIEWS = [
         "quote": (
             "Super professional, and skilled!  Cleaned up at job end.  Kind and patient with senior citizen home owner. "
         ),
+    },
+]
+
+
+# Cost ranges shown on the homepage. Homeowners filter hard on price, and the
+# site had no dollar figure anywhere on it while the cost guides under /blog had
+# dozens -- so the numbers existed, just not where people decide.
+#
+# Every figure below is lifted from those guides rather than invented, so there
+# is one source of truth. Changing a number here changes the homepage.
+#
+# NEEDS MICHAEL'S SIGN-OFF: the guides are dated 2025 and have not been
+# re-priced. Putting the figures on the homepage makes them the first thing a
+# visitor reads, so he should confirm they still match what he quotes.
+PRICE_GUIDE = [
+    {
+        'icon': 'i-hammer',
+        'label': 'Kitchen Remodel',
+        'typical': '$25,000 - $60,000',
+        'typical_note': 'most mid-range projects',
+        'notes': [
+            'Budget remodels start around $10,000',
+            'High-end runs to $120,000+',
+        ],
+        'href': '/blog/kitchen-remodel-cost-guide',
+        'link_text': 'See the full kitchen cost breakdown',
+    },
+    {
+        'icon': 'i-wrench',
+        'label': 'Bathroom Remodel',
+        'typical': '$15,000 - $35,000',
+        'typical_note': 'most mid-range projects',
+        'notes': [
+            'Powder rooms start around $3,000',
+            'High-end runs to $80,000+',
+        ],
+        'href': '/blog/bathroom-remodel-cost-guide',
+        'link_text': 'See the full bathroom cost breakdown',
+    },
+    {
+        'icon': 'i-home',
+        'label': 'ADU & Custom Builds',
+        'typical': 'Quoted per project',
+        'typical_note': 'scope varies too much for one range',
+        'notes': [
+            'Guide example: 600 sq ft detached ADU at $210,000',
+            'Typically adds $150,000 - $200,000 in property value',
+        ],
+        'href': '/blog/adu-construction-san-diego-guide',
+        'link_text': 'Read the San Diego ADU guide',
     },
 ]
 

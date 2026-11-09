@@ -619,6 +619,131 @@ body > header {
     font-weight: bold;
 }
 
+/* Pricing Section
+   The site carried no dollar figure anywhere while the cost guides under /blog
+   carried dozens. Sits between the alt-grey services band and the dark gallery,
+   so it takes the white surface to keep the alternation. Figures come from
+   PRICE_GUIDE in app.py. */
+.pricing {
+    padding: 5rem 0;
+    background: var(--surface);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* White, not --surface-alt: --brand-link is only documented at 4.6:1 against
+   white, and on the alt grey it measured 4.36:1 -- under the 4.5:1 AA floor for
+   text this size. The border and shadow define the card instead of a fill. */
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.pricing-head {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+.pricing-icon {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-tint);
+    border: 2px solid var(--brand);
+    color: var(--brand-strong);
+}
+
+.pricing-head h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--ink);
+}
+
+.pricing-figure {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--brand-strong);
+}
+
+/* --ink-body, not --ink-muted: these qualify a dollar figure someone is about
+   to budget against, so they have to be readable. --ink-muted is 3.48:1 on
+   white, short of the 4.5:1 AA floor. */
+.pricing-figure-note {
+    margin: 0.35rem 0 1.25rem;
+    font-size: 0.9rem;
+    color: var(--ink-body);
+}
+
+.pricing-notes {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+}
+
+.pricing-notes li {
+    position: relative;
+    padding: 0.35rem 0 0.35rem 1.15rem;
+    font-size: 0.95rem;
+    color: var(--ink-body);
+}
+
+.pricing-notes li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.95rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand);
+}
+
+/* auto top margin pins the guide link to the bottom edge of every card, so a
+   card with a longer note list stays aligned with its neighbours */
+.pricing-link {
+    margin: auto 0 0;
+    font-size: 0.95rem;
+}
+
+.pricing-link a {
+    color: var(--brand-link);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pricing-link a:hover,
+.pricing-link a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.pricing-disclaimer {
+    margin: 2rem auto 0;
+    max-width: 640px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--ink-body);
+}
+
 /* Gallery Section */
 .gallery {
     padding: 5rem 0;
@@ -873,6 +998,18 @@ body > header {
     margin-bottom: 0.5rem;
     font-weight: 600;
     color: var(--ink);
+}
+
+/* Reads as a reassurance rather than a requirement, so the description field
+   does not look like one more hurdle before someone can get a quote. */
+.form-optional {
+    margin-left: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    /* --ink-muted would be 3.48:1 here, and at 12px this needs 4.5:1 */
+    color: var(--ink-body);
 }
 
 .form-group input,
